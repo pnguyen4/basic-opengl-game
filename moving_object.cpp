@@ -5,9 +5,11 @@ using namespace std;
 
 MovingObject::MovingObject() { }
 MovingObject::~MovingObject() { }
+
 int MovingObject::get_x_coord() const { return x_coord; }
 int MovingObject::get_y_coord() const { return y_coord; }
 double MovingObject::getMovementSpeed() const { return movement_speed; }
+color MovingObject::getColor() const { return fill; }
 
 void MovingObject::set_x_coord(int x) {
     x_coord = x;
@@ -21,6 +23,11 @@ void MovingObject::set_y_coord(int y) {
 
 void MovingObject::setMovementSpeed(int speed) {
     movement_speed = speed;
+    /* todo: check for valid input */
+}
+
+void MovingObject::setColor(double r, double g, double b) {
+    fill = {r,g,b};
     /* todo: check for valid input */
 }
 
