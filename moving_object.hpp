@@ -41,7 +41,7 @@ class MovingObject{
         virtual void set_y_coord(int y);
         virtual void setMovementSpeed(int speed);
 
-        virtual void setColor(double r, double b, double g);
+        virtual void setColor(double r, double g, double b);
 
 };
 
