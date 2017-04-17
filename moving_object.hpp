@@ -8,12 +8,11 @@ struct color {
 };
 
 class MovingObject{
-    private:
+    protected:
         int x_coord;
         int y_coord;
         color fill;
         // color border;
-    protected:
         double movement_speed;
     public:
         MovingObject();
@@ -47,14 +46,19 @@ class MovingObject{
 class Player : public MovingObject {
     private:
         double health;
+        //double attack_strength;
     public:
         Player();
 
-        /* todo */
         virtual void left() override;
         virtual void right() override;
         virtual void up() override;
         virtual void down() override;
+
+        virtual void left(int step);
+        virtual void right(int step);
+        virtual void up(int step);
+        virtual void down(int step);
 
         /*
          * Requires: terrain_speed > 0
@@ -66,5 +70,43 @@ class Player : public MovingObject {
         // getters return field vars. That's literally it.
         virtual double getHealth() const;
 
+        // setters
+        virtual void setHealth(double hp);
+
+        virtual void draw() const override;
+};
+
+class Enemy: public MovingObject {
+    private:
+        double health;
+        double strength;
+    public:
+        Enemy();
+
+        virtual void left() override;
+        virtual void right() override;
+        virtual void up() override;
+        virtual void down() override;
+
+        virtual void left(int step);
+        virtual void right(int step);
+        virtual void up(int step);
+        virtual void down(int step);
+
+        /*
+         * Requires: terrain_speed > 0
+         * Modifies: nothing
+         * Effects: computes the net speed
+         */
+        virtual double calcSpeed(double terrain_speed) const override;
+
+        // getters return field vars. That's literally it.
+        virtual double getHealth() const;
+        virtual double getStrength() const;
+
+        // setters
+        virtual void setHealth(double hp);
+
+        double attack(Player p);
         virtual void draw() const override;
 };
