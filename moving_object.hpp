@@ -31,7 +31,7 @@ class MovingObject{
         virtual int get_x_coord() const;
         virtual int get_y_coord() const;
         virtual double getMovementSpeed() const;
-
+        virtual color getColor() const;
         /*
          * Requires: parameters to be >0 and <max-width
          * Modifies: private fields
@@ -40,6 +40,8 @@ class MovingObject{
         virtual void set_x_coord(int x);
         virtual void set_y_coord(int y);
         virtual void setMovementSpeed(int speed);
+
+        virtual void setColor(double r, double g, double b);
 
 };
 
