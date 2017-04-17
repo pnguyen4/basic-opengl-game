@@ -21,7 +21,7 @@ void TerrainObject::set_y_coord(int y) {
     /* todo: check for valid input */
 }
 
-void TerrainObject::setColor(double r, double b, double g) {
+void TerrainObject::setColor(double r, double g, double b) {
     fill = {r,g,b};
 }
 

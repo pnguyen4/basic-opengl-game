@@ -26,7 +26,7 @@ class TerrainObject {
 
         virtual void set_x_coord(int x);
         virtual void set_y_coord(int y);
-        virtual void setColor(double r, double b, double g);
+        virtual void setColor(double r, double g, double b);
 };
 
 class Grass : public TerrainObject {
