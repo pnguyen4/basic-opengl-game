@@ -1,6 +1,5 @@
 #include "moving_object.hpp"
 using namespace std;
-
 /* Moving Object Class Definitions */
 
 MovingObject::MovingObject() { }
@@ -9,7 +8,7 @@ MovingObject::~MovingObject() { }
 int MovingObject::get_x_coord() const { return x_coord; }
 int MovingObject::get_y_coord() const { return y_coord; }
 double MovingObject::getMovementSpeed() const { return movement_speed; }
-color MovingObject::getColor() const { return fill; }
+GameObject::color MovingObject::getColor() const { return fill; }
 
 void MovingObject::set_x_coord(int x) {
     x_coord = x;
@@ -36,8 +35,16 @@ void MovingObject::setColor(double r, double g, double b) {
 
 /* Player Object Class Definitions */
 
-Player::Player() { }
+Player::Player(int x, int y, double hp) {
+    setColor(0,0,0);
+    setMovementSpeed(1);
+    set_y_coord(y);
+    set_x_coord(x);
+    setHealth(hp);
+}
+
 double Player::getHealth() const { return health; }
+void Player::setHealth(double hp) { health = hp; }
 
 void Player::left() { x_coord - 1; }
 void Player::right() { x_coord + 1; }
@@ -64,9 +71,18 @@ void Player::draw() const {
 
 /* Enemy Object Class Definitions */
 
-Enemy::Enemy() { }
+Enemy::Enemy(int x, int y, double hp, double str) {
+    setHealth(hp);
+    set_x_coord(x);
+    set_y_coord(y);
+    setStrength(str);
+    setMovementSpeed(1);
+
+}
 double Enemy::getHealth() const { return health; }
 double Enemy::getStrength() const { return strength; }
+void Enemy::setHealth(double hp) { health = hp; }
+void Enemy::setStrength(double str) { strength = str; }
 
 void Enemy::left() { x_coord - 1; }
 void Enemy::right() { x_coord + 1; }
@@ -84,8 +100,8 @@ double Enemy::calcSpeed(double terrain_speed) const {
     }
 }
 
-double Enemy::attack(Player p) {
-    p.setHealth(p.getHealth() - strength);
+double Enemy::attack(Player *p) {
+    p->setHealth(p->getHealth() - strength);
     return strength;
 }
 

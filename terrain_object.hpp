@@ -1,17 +1,15 @@
+#ifndef terrain_object
+#define terrain_object
+
+#include "object.hpp"
 using namespace std;
 
-struct color {
-    double red;
-    double blue;
-    double green;
-};
-
-class TerrainObject {
+class TerrainObject : public GameObject {
     protected:
         int x_coord;
         int y_coord;
         double terrain_speed;
-        color fill;
+        GameObject::color fill;
         // color border;
     public:
         TerrainObject();
@@ -44,3 +42,5 @@ class Water : public TerrainObject {
         Water();
         virtual void draw() const override;
 };
+
+#endif
