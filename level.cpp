@@ -1,30 +1,36 @@
 #include "level.hpp"
 
 Level::Level() {
-    for (int j = 0; j < 20; ++j) {
-        for (int k = 0; k < 20; ++k) {
-            map[j][k] = make_unique<Grass>(j,k);
-        }
-    }
-
-    moving[0] = make_unique<Enemy>(5,5,10,1);
-    moving[2] = make_unique<Enemy>(15,15,10,1);
+	Level(10, 20);
 }
 
-void Level::renderObjects() {
-    for (int j = 0; j < 20; ++j) {
-        for (int k = 0; k < 20; ++k) {
-            map[j][k]->draw();
-        }
-    }
+Level::Level(int width, int height) {
+	for (int w = 0; w < width; ++w) {
+		for (int h = 0; h < height; ++h) {
+			map[w][h] = make_unique<Grass>(w,h);
+		}
+	}
+	moving.push_back(make_unique<Enemy>(1,1,2,2));
+}
 
-    for (int i = 0; i < moving.size(); ++i) {
-        moving[i]->draw();
-    }
+Level::~Level() {
+
 }
 
 void Level::moveObjects() {
-    for (int i = 0; i < moving.size(); ++i) {
-        moving[i]->left(); //every call of this function makes the enemies walk left
-    }
+	for (int i = 0; i < moving.size(); ++i) {
+		moving[i]->left();
+	}
+}
+
+void Level::renderObjects() {
+	for (int i = 0; i < map.size(); ++i) {
+		for (int j = 0; j < map[i].size(); ++j) {
+			map[i][j]->draw();
+		}
+	}
+	for (int k = 0; k < moving.size(); ++k) {
+		moving[k]->draw();
+	}
+	this_player.draw();
 }

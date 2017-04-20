@@ -46,6 +46,7 @@ class Player : public MovingObject {
         double health;
         //double attack_strength;
     public:
+		Player();
         Player(int x, int y, double hp);
 
         virtual void left() override;

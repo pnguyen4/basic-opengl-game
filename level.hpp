@@ -1,10 +1,10 @@
-#ifndef level_
-#define level_
+#ifndef level
+#define level
 
-#include <vector>
 #include <memory>
-#include "terrain_object.hpp"
+#include <vector>
 #include "moving_object.hpp"
+#include "terrain_object.hpp"
 using namespace std;
 
 class Level {
@@ -13,10 +13,15 @@ class Level {
         vector<unique_ptr<MovingObject>> moving;
 
         virtual void moveObjects(); //called by render
+		Player this_player;
 
     public:
-        Level();
-        //Level (int select); //idea: levels 0-9 pregenerated
+
+		Level();
+		Level(int width, int height);
+		~Level();
+
+
         virtual void renderObjects();
         // virtual void playGame();
 };

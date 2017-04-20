@@ -7,13 +7,13 @@ using namespace std;
 
 int main() {
 
-/*+=+=+=+= Test Code =+=+=+=*/
+	Level map();
+	Enemy enemy(1, 1, 1, 1);
+	Player player(1, 1, 1);
+	Grass grass(1, 1);
+	Water water(1, 1);
 
-    Level map();
-    Enemy enemy(1,1,1,1);
-    Player player(1,1,1);
-    Grass grass(1,1);
-    Water water(1,1);
+/*+=+=+=+= Test Code =+=+=+=*/
 
     cout << "***TESTING PLAYER CLASS***" << endl;
 
