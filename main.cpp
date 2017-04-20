@@ -1,5 +1,5 @@
 //#include "graphics.hpp"
-//#include "level.hpp"
+#include "level.hpp"
 #include "moving_object.hpp"
 #include "terrain_object.hpp"
 #include <iostream>
@@ -9,7 +9,7 @@ int main() {
 
 /*+=+=+=+= Test Code =+=+=+=*/
 
-    //Level map1();
+    Level map();
     Enemy enemy(1,1,1,1);
     Player player(1,1,1);
     Grass grass(1,1);
