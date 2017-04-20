@@ -31,7 +31,7 @@ class Grass : public TerrainObject {
     private:
 
     public:
-        Grass();
+        Grass(int x, int y);
         virtual void draw() const override;
 };
 
@@ -39,7 +39,7 @@ class Water : public TerrainObject {
     private:
 
     public:
-        Water();
+        Water(int x, int y);
         virtual void draw() const override;
 };
 

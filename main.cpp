@@ -10,61 +10,152 @@ int main() {
 /*+=+=+=+= Test Code =+=+=+=*/
 
     //Level map1();
-    //MovingObject test1(); //should return compile time error
-    //TerrainObject test2(); //should return compile time error
-    Enemy enemy;
-    Player player1;
-    Player player2(1,1,1);
-    Grass grass;
-    Water water;
+    Enemy enemy(1,1,1,1);
+    Player player(1,1,1);
+    Grass grass(1,1);
+    Water water(1,1);
 
-    int x = player1.get_x_coord();
-    int y = player1.get_y_coord();
-    double hp = player1.getHealth();
-    GameObject::color c = player1.getColor();
-    double s = player1.getMovementSpeed();
-    cout << "player1 xcoord, ycoord, speed, health, color: " << x << ", "<<  y <<  ", " << s << ", " << hp;
-    cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
-    player1.right(); player1.left(); player1.up(); player1.down();
+    cout << "***TESTING PLAYER CLASS***" << endl;
 
-    x = player2.get_x_coord();
-    y = player2.get_y_coord();
-    hp = player2.getHealth();
-    c = player2.getColor();
-    s = player2.getMovementSpeed();
-    cout << "player2 xcoord, ycoord, speed, health, color: " << x << ", "<<  y <<  ", " << s << ", " << hp;
+    int x = player.get_x_coord();
+    int y = player.get_y_coord();
+    double hp = player.getHealth();
+    GameObject::color c = player.getColor();
+    double s = player.getMovementSpeed();
+    cout << "player xcoord, ycoord, speed, health, color: " << x << ", "<<  y <<
+        ", " << s << ", " << hp;
     cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
-    player2.right(); player2.left(); player2.up(); player2.down();
+    player.right(); player.left(); player.up(); player.down();
 
     cout << "CHANGING VALUES (TESTING NORMAL #'s)" << endl;
 
-    player2.set_x_coord(10);
-    player2.set_y_coord(10);
-    player2.setMovementSpeed(20);
-    player2.setColor(10,10,10);
-    player2.setHealth(9001);
-    x = player2.get_x_coord();
-    y = player2.get_y_coord();
-    hp = player2.getHealth();
-    c = player2.getColor();
-    s = player2.getMovementSpeed();
-    cout << "player2 xcoord, ycoord, speed, health, color: " << x << ", "<<  y <<  ", " << s << ", " << hp;
+    player.set_x_coord(10);
+    player.set_y_coord(10);
+    player.setMovementSpeed(20);
+    player.setColor(10,10,10);
+    player.setHealth(9001);
+    x = player.get_x_coord();
+    y = player.get_y_coord();
+    hp = player.getHealth();
+    c = player.getColor();
+    s = player.getMovementSpeed();
+    cout << "player xcoord, ycoord, speed, health, color: " << x << ", "<<  y <<
+        ", " << s << ", " << hp;
     cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
 
     cout << "CHANGING VALUES (TESTING NEGATIVE #'s)" << endl;
-    player2.set_x_coord(-1);
-    player2.set_y_coord(-1);
-    player2.setMovementSpeed(-1);
-    player2.setColor(-1,-1,-1);
-    player2.setHealth(-1);
-    x = player2.get_x_coord();
-    y = player2.get_y_coord();
-    hp = player2.getHealth();
-    c = player2.getColor();
-    s = player2.getMovementSpeed();
-    cout << "player2 xcoord, ycoord, speed, health, color: " << x << ", "<<  y <<  ", " << s << ", " << hp;
+    player.set_x_coord(-1);
+    player.set_y_coord(-1);
+    player.setMovementSpeed(-1);
+    player.setColor(-1,-1,-1);
+    player.setHealth(-1);
+    x = player.get_x_coord();
+    y = player.get_y_coord();
+    hp = player.getHealth();
+    c = player.getColor();
+    s = player.getMovementSpeed();
+    cout << "player xcoord, ycoord, speed, health, color: " << x << ", "<<  y <<
+        ", " << s << ", " << hp;
     cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
-    ///// At this point all getters, setters, and constructors should be tested for player /////
+    ///// At this point all getters, setters, and //////
+    ///// constructors should be tested for player /////
 
+    cout << endl;
+    cout << "***TESTING ENEMY CLASS***" << endl;
+
+    x = enemy.get_x_coord();
+    y = enemy.get_y_coord();
+    hp = enemy.getHealth();
+    c = enemy.getColor();
+    s = enemy.getMovementSpeed();
+    double str =  enemy.getStrength();
+    cout << "enemy xcoord, ycoord, speed, health, strength, color: " << x << ", "
+        <<  y <<  ", " << s << ", " << hp << ", " << str;
+    cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
+    enemy.right(); enemy.left(); enemy.up(); enemy.down();
+
+    cout << "CHANGING VALUES (TESTING NORMAL #'s)" << endl;
+    enemy.set_x_coord(10);
+    enemy.set_y_coord(10);
+    enemy.setMovementSpeed(20);
+    enemy.setColor(10,10,10);
+    enemy.setHealth(9001);
+    enemy.setStrength(9001);
+    x = enemy.get_x_coord();
+    y = enemy.get_y_coord();
+    hp = enemy.getHealth();
+    c = enemy.getColor();
+    s = enemy.getMovementSpeed();
+    str = enemy.getStrength();
+    cout << "enemy xcoord, ycoord, speed, health, strength, color: " << x << ", "
+        <<  y <<  ", " << s << ", " << hp << ", " << str;
+    cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
+
+    cout << "CHANGING VALUES (TESTING NEGATIVE #'s)" << endl;
+    enemy.set_x_coord(-1);
+    enemy.set_y_coord(-1);
+    enemy.setMovementSpeed(-1);
+    enemy.setColor(-1,-1,-1);
+    enemy.setHealth(-1);
+    enemy.setStrength(-1);
+    x = enemy.get_x_coord();
+    y = enemy.get_y_coord();
+    hp = enemy.getHealth();
+    c = enemy.getColor();
+    s = enemy.getMovementSpeed();
+    str = enemy.getStrength();
+    cout << "enemy xcoord, ycoord, speed, health, strength, color: " << x << ", "
+        <<  y <<  ", " << s << ", " << hp << ", " << str;
+    cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
+
+    cout << endl;
+    cout << "***TESTING GRASS CLASS***" << endl;
+
+    x = grass.get_x_coord();
+    y = grass.get_y_coord();
+    c = grass.getColor();
+    cout << "grass xcoord, ycoord color: " << x << ", " <<  y;
+    cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
+
+    cout << "CHANGING VALUES (TESTING NORMAL #'s)" << endl;
+    grass.set_x_coord(10);
+    grass.set_y_coord(10);
+    x = grass.get_x_coord();
+    y = grass.get_y_coord();
+    cout << "grass xcoord, ycoord color: " << x << ", " <<  y;
+    cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
+
+    cout << "CHANGING VALUES (TESTING NEGATIVE #'s)" << endl;
+    grass.set_x_coord(-1);
+    grass.set_y_coord(-1);
+    x = grass.get_x_coord();
+    y = grass.get_y_coord();
+    cout << "grass xcoord, ycoord color: " << x << ", " <<  y;
+    cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
+
+    cout << endl;
+    cout << "***TESTING WATER CLASS***" << endl;
+
+    x = water.get_x_coord();
+    y = water.get_y_coord();
+    c = water.getColor();
+    cout << "water xcoord, ycoord color: " << x << ", " <<  y;
+    cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
+
+    cout << "CHANGING VALUES (TESTING NORMAL #'s)" << endl;
+    water.set_x_coord(10);
+    water.set_y_coord(10);
+    x = water.get_x_coord();
+    y = water.get_y_coord();
+    cout << "grass xcoord, ycoord color: " << x << ", " <<  y;
+    cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
+
+    cout << "CHANGING VALUES (TESTING NEGATIVE #'s)" << endl;
+    water.set_x_coord(-1);
+    water.set_y_coord(-1);
+    x = water.get_x_coord();
+    y = water.get_y_coord();
+    cout << "grass xcoord, ycoord color: " << x << ", " <<  y;
+    cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
     return 0;
 }

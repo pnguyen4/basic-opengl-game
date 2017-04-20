@@ -77,8 +77,9 @@ Enemy::Enemy(int x, int y, double hp, double str) {
     set_y_coord(y);
     setStrength(str);
     setMovementSpeed(1);
-
+    setColor(0,0,0);
 }
+
 double Enemy::getHealth() const { return health; }
 double Enemy::getStrength() const { return strength; }
 void Enemy::setHealth(double hp) { health = hp; }
