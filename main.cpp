@@ -13,7 +13,6 @@ int main() {
 	Grass grass(1, 1);
 	Water water(1, 1);
 
-
 /*+=+=+=+= Test Code =+=+=+=*/
 
     cout << "***TESTING PLAYER CLASS***" << endl;

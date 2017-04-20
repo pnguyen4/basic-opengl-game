@@ -8,7 +8,7 @@
 using namespace std;
 
 class Level {
-    protected:
+    private:
         int max_width;
         int max_height;
         vector<vector<unique_ptr<TerrainObject>>> map;
