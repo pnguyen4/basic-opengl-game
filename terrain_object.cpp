@@ -9,7 +9,7 @@ TerrainObject::~TerrainObject() { }
 int TerrainObject::get_x_coord() const { return x_coord; }
 int TerrainObject::get_y_coord() const { return y_coord; }
 double TerrainObject::getTerrainSpeed() const { return terrain_speed; }
-color TerrainObject::getColor() { return fill; }
+GameObject::color TerrainObject::getColor() { return fill; }
 
 void TerrainObject::set_x_coord(int x) {
     x_coord = x;
@@ -30,7 +30,11 @@ void TerrainObject::setColor(double r, double g, double b) {
 
 /* Grass Object Class Definitions */
 
-Grass::Grass() { }
+Grass::Grass(int x, int y) {
+    set_x_coord(x);
+    set_y_coord(y);
+    setColor(0,255,0);
+}
 void Grass::draw() const {
     /* todo: GRAPHICS */
 }
@@ -40,7 +44,11 @@ void Grass::draw() const {
 
 /* Water Object Class Definitions */
 
-Water::Water() { }
+Water::Water(int x, int y) {
+    set_x_coord(x);
+    set_y_coord(y);
+    setColor(0,0,255);
+}
 void Water::draw() const {
     /* todo: GRAPHICS */
 }
