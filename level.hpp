@@ -9,6 +9,7 @@ class Level {
         Vector<unique_ptr<MovingObject>> moving;
 
         virtual void moveObjects(); //called by render
+		Player this_player;
 
     public:
 
