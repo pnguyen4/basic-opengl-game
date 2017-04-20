@@ -35,6 +35,10 @@ void MovingObject::setColor(double r, double g, double b) {
 
 /* Player Object Class Definitions */
 
+Player::Player() {
+	Player(3, 3, 10);
+}
+
 Player::Player(int x, int y, double hp) {
     setColor(0,0,0);
     setMovementSpeed(1);
