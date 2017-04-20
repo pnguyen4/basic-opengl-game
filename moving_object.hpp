@@ -1,13 +1,10 @@
+#ifndef moving_object
+#define moving_object
+
+#include "object.hpp"
 using namespace std;
 
-// temporary solution
-struct color {
-    double red;
-    double blue;
-    double green;
-};
-
-class MovingObject{
+class MovingObject : public GameObject {
     protected:
         int x_coord;
         int y_coord;
@@ -25,7 +22,6 @@ class MovingObject{
         virtual void up() = 0;
         virtual void down() = 0;
         virtual double calcSpeed(double terrain_speed) const = 0;
-        virtual void draw() const = 0;
 
         // getters return field vars. That's literally it.
         virtual int get_x_coord() const;
@@ -50,7 +46,7 @@ class Player : public MovingObject {
         double health;
         //double attack_strength;
     public:
-        Player();
+        Player(int x, int y, double hp);
 
         virtual void left() override;
         virtual void right() override;
@@ -83,7 +79,7 @@ class Enemy: public MovingObject {
         double health;
         double strength;
     public:
-        Enemy();
+        Enemy(int x, int y, double hp, double str);
 
         virtual void left() override;
         virtual void right() override;
@@ -108,7 +104,10 @@ class Enemy: public MovingObject {
 
         // setters
         virtual void setHealth(double hp);
+        virtual void setStrength(double str);
 
-        double attack(Player p);
+        double attack(Player *p);
         virtual void draw() const override;
 };
+
+#endif
