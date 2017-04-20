@@ -9,6 +9,8 @@ using namespace std;
 
 class Level {
     private:
+        int max_width;
+        int max_height;
         vector<vector<unique_ptr<TerrainObject>>> map;
         vector<unique_ptr<MovingObject>> moving;
 
@@ -20,7 +22,8 @@ class Level {
 		Level();
 		Level(int width, int height);
 		~Level();
-
+        int getMaxWidth() const;
+        int getMaxHeight() const;
 
         virtual void renderObjects();
         // virtual void playGame();

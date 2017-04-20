@@ -1,4 +1,5 @@
 #include "terrain_object.hpp"
+#include <iostream>
 using namespace std;
 
 /* Terrain Object Class Definitions */
@@ -12,17 +13,30 @@ double TerrainObject::getTerrainSpeed() const { return terrain_speed; }
 GameObject::color TerrainObject::getColor() { return fill; }
 
 void TerrainObject::set_x_coord(int x) {
-    x_coord = x;
-    /* todo: check for valid input */
+    if (x >= 0) {
+        x_coord = x;
+    } else {
+        cout << "error: negative value for x" << endl;
+        x_coord = 1;
+    }
 }
 
 void TerrainObject::set_y_coord(int y) {
-    y_coord = y;
-    /* todo: check for valid input */
+    if (y >= 0) {
+        y_coord = y;
+    } else {
+        cout << "error: negative value for y" << endl;
+        y_coord = 1;
+    }
 }
 
 void TerrainObject::setColor(double r, double g, double b) {
-    fill = {r,g,b};
+    if (r >=0 && g >=0 && b >= 0) {
+        fill = {r,g,b};
+    } else {
+        cout << "error: negative value for a color value" << endl;
+        fill = {0,0,0};
+    }
 }
 
 /* End of Terrain Object Class Definitions */
