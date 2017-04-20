@@ -1,11 +1,17 @@
 //#include "graphics.hpp"
-//#include "level.hpp"
+#include "level.hpp"
 #include "moving_object.hpp"
 #include "terrain_object.hpp"
 #include <iostream>
 using namespace std;
 
 int main() {
+
+	Level map();
+	Enemy enemy(1, 1, 1, 1);
+	Player player(1, 1, 1);
+	Grass grass(1, 1);
+	Water water(1, 1);
 
 /*+=+=+=+= Test Code =+=+=+=*/
 
