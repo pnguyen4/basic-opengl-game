@@ -7,11 +7,6 @@
 #include "moving_object.hpp"
 using namespace std;
 
-/*================================================/
- *      ***    THIS NEEDS SOME WORK    ***     /
- *===============================================*/
-
-
 class Level {
     private:
         vector<vector<unique_ptr<TerrainObject>>> map;
