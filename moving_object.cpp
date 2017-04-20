@@ -1,4 +1,6 @@
 #include "moving_object.hpp"
+#include "level.hpp"
+#include <iostream>
 using namespace std;
 /* Moving Object Class Definitions */
 
@@ -11,23 +13,39 @@ double MovingObject::getMovementSpeed() const { return movement_speed; }
 GameObject::color MovingObject::getColor() const { return fill; }
 
 void MovingObject::set_x_coord(int x) {
-    x_coord = x;
-    /* todo: check for valid input */
+    if (x >= 0) {
+        x_coord = x;
+    } else {
+        cout << "error: negative value for x" << endl;
+        x_coord = 1;
+    }
 }
 
 void MovingObject::set_y_coord(int y) {
-    y_coord = y;
-    /* todo: check for valid input */
+    if (y >= 0) {
+        y_coord = y;
+    } else {
+        cout << "error: negative value for y" << endl;
+        y_coord = 1;
+    }
 }
 
 void MovingObject::setMovementSpeed(int speed) {
-    movement_speed = speed;
-    /* todo: check for valid input */
+    if (speed >= 0) {
+        movement_speed = speed;
+    } else {
+        cout << "error: negative value for movement_speed" << endl;
+        movement_speed = 1;
+    }
 }
 
 void MovingObject::setColor(double r, double g, double b) {
-    fill = {r,g,b};
-    /* todo: check for valid input */
+    if (r >=0 && g >=0 && b >= 0) {
+        fill = {r,g,b};
+    } else {
+        cout << "error: negative value for a color value" << endl;
+        fill = {0,0,0};
+    }
 }
 
 /* End of MovingObject Class Definitions */
@@ -50,6 +68,8 @@ Player::Player(int x, int y, double hp) {
 double Player::getHealth() const { return health; }
 void Player::setHealth(double hp) { health = hp; }
 
+// let the draw function handle when bounds are hit,
+// in that case use set_x_coord and set_y_coord to go to other side of screen
 void Player::left() { x_coord - 1; }
 void Player::right() { x_coord + 1; }
 void Player::up() { y_coord - 1; }
@@ -86,8 +106,22 @@ Enemy::Enemy(int x, int y, double hp, double str) {
 
 double Enemy::getHealth() const { return health; }
 double Enemy::getStrength() const { return strength; }
-void Enemy::setHealth(double hp) { health = hp; }
-void Enemy::setStrength(double str) { strength = str; }
+void Enemy::setHealth(double hp) {
+    if (health > 0) {
+        health = hp;
+    } else {
+        cout << "error: negative value for health value" << endl;
+        health = 1;
+    }
+}
+void Enemy::setStrength(double str) {
+    if (strength > 0) {
+        strength = str;
+    } else {
+        cout << "error: negative value for strength value" << endl;
+        strength = 1;
+    }
+}
 
 void Enemy::left() { x_coord - 1; }
 void Enemy::right() { x_coord + 1; }
