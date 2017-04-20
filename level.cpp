@@ -10,8 +10,7 @@ Level::Level(int width, int height) {
 			map[w][h] = make_unique<Grass>(w,h);
 		}
 	}
-	moving.push_back(make_unique<Enemy>);
-	Player(3, 3, 10);
+	moving.push_back(make_unique<Enemy>(1,1,2,2));
 }
 
 Level::~Level() {

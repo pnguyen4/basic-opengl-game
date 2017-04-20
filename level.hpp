@@ -1,12 +1,16 @@
+#ifndef level
+#define level
+
+#include <memory>
 #include <vector>
+#include "moving_object.hpp"
+#include "terrain_object.hpp"
 using namespace std;
 
 class Level {
-
-
     private:
-        Vector<Vector<unique_ptr<TerrainObject>>> map;
-        Vector<unique_ptr<MovingObject>> moving;
+        vector<vector<unique_ptr<TerrainObject>>> map;
+        vector<unique_ptr<MovingObject>> moving;
 
         virtual void moveObjects(); //called by render
 		Player this_player;
@@ -21,3 +25,5 @@ class Level {
         virtual void renderObjects();
         // virtual void playGame();
 };
+
+#endif
