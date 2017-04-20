@@ -17,6 +17,10 @@ void Level::renderObjects() {
             map[j][k]->draw();
         }
     }
+
+    for (int i = 0; i < moving.size(); ++i) {
+        moving[i]->draw();
+    }
 }
 
 void Level::moveObjects() {
