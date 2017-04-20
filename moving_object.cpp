@@ -66,7 +66,14 @@ Player::Player(int x, int y, double hp) {
 }
 
 double Player::getHealth() const { return health; }
-void Player::setHealth(double hp) { health = hp; }
+void Player::setHealth(double hp) {
+    if (hp > 0) {
+        health = hp;
+    } else {
+        cout << "error: negative value for health value" << endl;
+        health = 1;
+    }
+}
 
 // let the draw function handle when bounds are hit,
 // in that case use set_x_coord and set_y_coord to go to other side of screen
@@ -107,7 +114,7 @@ Enemy::Enemy(int x, int y, double hp, double str) {
 double Enemy::getHealth() const { return health; }
 double Enemy::getStrength() const { return strength; }
 void Enemy::setHealth(double hp) {
-    if (health > 0) {
+    if (hp > 0) {
         health = hp;
     } else {
         cout << "error: negative value for health value" << endl;
@@ -115,7 +122,7 @@ void Enemy::setHealth(double hp) {
     }
 }
 void Enemy::setStrength(double str) {
-    if (strength > 0) {
+    if (str > 0) {
         strength = str;
     } else {
         cout << "error: negative value for strength value" << endl;
