@@ -1,4 +1,5 @@
 #include "level.hpp"
+#include <iostream>
 using namespace std;
 
 Level::Level() {
@@ -19,6 +20,20 @@ Level::Level(int width, int height) {
 		}
 	}
 	moving.push_back(make_unique<Enemy>(1,1,2,2));
+}
+
+Level::Level(int selector) {
+    switch(selector) {
+        case 1: Level();
+                break;
+        case 2: Level();
+                for (int w = 0; w < 10; ++w) {
+                    map[w][10] = make_unique<Water>(w,10);
+                }
+	            moving.push_back(make_unique<Enemy>(5,5,2,2));
+                break;
+        default: Level();
+    }
 }
 
 Level::~Level() {
@@ -45,3 +60,4 @@ void Level::renderObjects() {
 
 int Level::getMaxWidth() const { return max_width; }
 int Level::getMaxHeight() const { return max_height; }
+

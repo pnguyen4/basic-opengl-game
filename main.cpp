@@ -3,15 +3,39 @@
 #include "moving_object.hpp"
 #include "terrain_object.hpp"
 #include <iostream>
+#include <fstream>
 using namespace std;
+
+int level_id = 1;
+string file_name = "savefile.txt";
+
+void saveLevel() {
+    ofstream myfile;
+    myfile.open(file_name);
+    myfile << level_id;
+    myfile.close();
+}
+
+int loadLevel() {
+    ifstream myfile;
+    myfile.open(file_name);
+    int i;
+    myfile >> i;
+    return i;
+}
 
 int main() {
 
-	Level map;
+	Level map(level_id);
 	Enemy enemy(1, 1, 1, 1);
 	Player player(1, 1, 1);
 	Grass grass(1, 1);
 	Water water(1, 1);
+
+    saveLevel();
+    int test = loadLevel();
+    cout << "input from text file: " << test << endl;
+    cout << endl;
 
 /*+=+=+=+= Test Code =+=+=+=*/
 
