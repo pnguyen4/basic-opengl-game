@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
 
-	Level map();
+	Level map;
 	Enemy enemy(1, 1, 1, 1);
 	Player player(1, 1, 1);
 	Grass grass(1, 1);

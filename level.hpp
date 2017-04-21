@@ -13,6 +13,7 @@ class Level {
         int max_height;
         vector<vector<unique_ptr<TerrainObject>>> map;
         vector<unique_ptr<MovingObject>> moving;
+        string file_name = "savefile.txt";
 
         virtual void moveObjects(); //called by render
 		Player this_player;
