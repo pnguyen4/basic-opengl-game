@@ -28,6 +28,8 @@ class MovingObject : public GameObject {
         virtual int get_y_coord() const;
         virtual double getMovementSpeed() const;
         virtual color getColor() const;
+        virtual double getHealth() const = 0;
+        virtual double getStrength() const = 0;
         /*
          * Requires: parameters to be >0 and <max-width
          * Modifies: private fields
@@ -68,6 +70,7 @@ class Player : public MovingObject {
 
         // getters return field vars. That's literally it.
         virtual double getHealth() const;
+        virtual double getStrength() const {}
 
         // setters
         virtual void setHealth(double hp);
@@ -100,8 +103,8 @@ class Enemy: public MovingObject {
         virtual double calcSpeed(double terrain_speed) const override;
 
         // getters return field vars. That's literally it.
-        virtual double getHealth() const;
-        virtual double getStrength() const;
+        virtual double getHealth() const override;
+        virtual double getStrength() const override;
 
         // setters
         virtual void setHealth(double hp);
