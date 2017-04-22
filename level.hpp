@@ -27,7 +27,13 @@ class Level {
         int getMaxWidth() const;
         int getMaxHeight() const;
 
+        /*
+         * Requires: map and moving vectors must have dimensions >0
+         * Modifies: nothing
+         * Effects: renders player and moving objects on terrain map
+         */
         virtual void renderObjects();
+
         // virtual void playGame();
         void saveLevel();
 };

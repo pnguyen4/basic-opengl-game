@@ -51,11 +51,21 @@ class Player : public MovingObject {
 		Player();
         Player(int x, int y, double hp);
 
+        /*
+         * Requires: nothing
+         * Modifies: x or y coordinate
+         * Effects: moves Player one step
+         */
         virtual void left() override;
         virtual void right() override;
         virtual void up() override;
         virtual void down() override;
 
+        /*
+         * Requires: nothing
+         * Modifies: x or y coordinate
+         * Effects: moves Player number of steps given in parameter
+         */
         virtual void left(int step);
         virtual void right(int step);
         virtual void up(int step);
@@ -85,11 +95,21 @@ class Enemy: public MovingObject {
     public:
         Enemy(int x, int y, double hp, double str);
 
+        /*
+         * Requires: nothing
+         * Modifies: x or y coordinate
+         * Effects: moves Enemy one step
+         */
         virtual void left() override;
         virtual void right() override;
         virtual void up() override;
         virtual void down() override;
 
+        /*
+         * Requires: nothing
+         * Modifies: x or y coordinate
+         * Effects: moves Enemy number of steps given in parameter
+         */
         virtual void left(int step);
         virtual void right(int step);
         virtual void up(int step);
@@ -110,6 +130,11 @@ class Enemy: public MovingObject {
         virtual void setHealth(double hp);
         virtual void setStrength(double str);
 
+        /*
+         * Requires: nothing
+         * Modifies: health of player
+         * Effects: reduces player health by enemy strength
+         */
         double attack(Player *p);
         virtual void draw() const override;
 };
