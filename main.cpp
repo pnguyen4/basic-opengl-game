@@ -183,3 +183,10 @@ int main() {
     cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
     return 0;
 }
+
+/* 
+
+main.cpp
+CS120 Final Project
+
+*/
