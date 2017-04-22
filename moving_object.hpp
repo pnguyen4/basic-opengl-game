@@ -80,7 +80,7 @@ class Player : public MovingObject {
 
         // getters return field vars. That's literally it.
         virtual double getHealth() const;
-        virtual double getStrength() const {}
+        virtual double getStrength() const { return 0;}
 
         // setters
         virtual void setHealth(double hp);
