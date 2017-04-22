@@ -35,7 +35,6 @@ class Level {
         virtual void renderObjects();
 
         // virtual void playGame();
-        void saveLevel();
 };
 
 #endif
