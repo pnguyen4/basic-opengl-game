@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //#include "graphics.hpp"
 #include "level.hpp"
 #include "moving_object.hpp"
@@ -183,3 +184,11 @@ int main() {
     cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
     return 0;
 }
+=======
+/* 
+
+main.cpp
+CS120 Final Project
+
+*/
+>>>>>>> db891d6ee71c75873fdffd4ab0a253138c8cd099
