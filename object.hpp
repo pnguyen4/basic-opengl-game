@@ -10,6 +10,8 @@ class GameObject {
             double blue;
         };
         virtual void draw() const = 0;
+
+		int side_length = 20;
 };
 
 #endif
