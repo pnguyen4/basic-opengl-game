@@ -1,4 +1,4 @@
-//#include "graphics.hpp"
+#include "graphics.hpp"
 #include "level.hpp"
 #include "moving_object.hpp"
 #include "terrain_object.hpp"
@@ -8,6 +8,11 @@ using namespace std;
 
 int level_id = 1;
 string file_name = "savefile.txt";
+int width, height;
+int mouse_x, mouse_y;
+int wd;
+Level* map;
+Player player(1,1,1);
 
 void saveLevel() {
     ofstream myfile;
@@ -24,21 +29,104 @@ int loadLevel() {
     return i;
 }
 
-int main() {
+void init() {
 
-	Level map(level_id);
-	Enemy enemy(1, 1, 1, 1);
-	Player player(1, 1, 1);
-	Grass grass(1, 1);
-	Water water(1, 1);
-
+    /*
     saveLevel();
     int test = loadLevel();
     cout << "input from text file: " << test << endl;
     cout << endl;
+    */
+
+    map = new Level(level_id);
+
+    width = map->getMaxWidth() * 20;
+    height = map->getMaxHeight() * 20;
+    mouse_x = mouse_y = 0;
+}
+
+void initGL() {
+    glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+    glColor3f(0.0f, 0.0f, 1.0f);
+}
+
+void display() {
+    glViewport(0,0,width,height);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0.0,width,height,0.0,-1.f,1.f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glFlush();
+}
+
+void kbd(unsigned char key, int x, int y) {
+
+    glutPostRedisplay();
+    return;
+}
+
+void kbdS(int key, int x, int y) {
+    switch(key) {
+        case GLUT_KEY_DOWN:
+
+            break;
+        case GLUT_KEY_LEFT:
+
+            break;
+        case GLUT_KEY_RIGHT:
+
+            break;
+        case GLUT_KEY_UP:
+
+            break;
+    }
+
+    glutPostRedisplay();
+    return;
+}
+
+
+void cursor(int x, int y) {
+    mouse_x = x;
+    mouse_y = y;
+
+    glutPostRedisplay();
+}
+
+void mouse(int button, int state, int x, int y) {
+
+    glutPostRedisplay();
+}
+
+void timer(int extra) {
+    glutTimerFunc(30, timer, 0);
+    glutPostRedisplay();
+}
+
+int main(int argc, char** argv) {
+
+
+    init();
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_RGBA);
+    glutInitWindowSize(width, height);
+    glutInitWindowPosition(100, 100);
+
+    wd = glutCreateWindow("CS120 Game");
+    glutDisplayFunc(display);
+    initGL();
+    glutKeyboardFunc(kbd);
+    glutSpecialFunc(kbdS);
+    glutPassiveMotionFunc(cursor);
+    glutMouseFunc(mouse);
+    glutTimerFunc(0, timer, 0);
+    glutMainLoop();
+    return 0;
 
 /*+=+=+=+= Test Code =+=+=+=*/
 
+    /*
     cout << "***TESTING PLAYER CLASS***" << endl;
 
     int x = player.get_x_coord();
@@ -182,9 +270,10 @@ int main() {
     cout << "grass xcoord, ycoord color: " << x << ", " <<  y;
     cout << ", {" << c.red << "," << c.green << "," << c.blue << "}" << endl;
     return 0;
+    */
 }
 
-/* 
+/*
 
 main.cpp
 CS120 Final Project
