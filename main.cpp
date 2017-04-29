@@ -12,7 +12,7 @@ int width, height;
 int mouse_x, mouse_y;
 int wd;
 Level* map;
-Player player(1,1,1);
+Player* player;
 
 void saveLevel() {
     ofstream myfile;
@@ -38,9 +38,10 @@ void init() {
     cout << endl;
     */
 
-    map = new Level(level_id);
+    map = new Level(10,20);
+    player = map->getPlayer();
 
-    width = map->getMaxWidth() * 20;
+    width = map-> getMaxWidth() * 20;
     height = map->getMaxHeight() * 20;
     mouse_x = mouse_y = 0;
 }
@@ -55,8 +56,12 @@ void display() {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0.0,width,height,0.0,-1.f,1.f);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+    map->renderObjects();
+
     glFlush();
 }
 
@@ -69,19 +74,18 @@ void kbd(unsigned char key, int x, int y) {
 void kbdS(int key, int x, int y) {
     switch(key) {
         case GLUT_KEY_DOWN:
-
+            player->down();
             break;
         case GLUT_KEY_LEFT:
-
+            player->left();
             break;
         case GLUT_KEY_RIGHT:
-
+            player->right();
             break;
         case GLUT_KEY_UP:
-
+            player->up();
             break;
     }
-
     glutPostRedisplay();
     return;
 }
@@ -110,7 +114,7 @@ int main(int argc, char** argv) {
     init();
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA);
-    glutInitWindowSize(width, height);
+    glutInitWindowSize((int)width, (int)height);
     glutInitWindowPosition(100, 100);
 
     wd = glutCreateWindow("CS120 Game");

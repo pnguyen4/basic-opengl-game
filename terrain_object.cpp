@@ -1,4 +1,5 @@
 #include "terrain_object.hpp"
+#include "graphics.hpp"
 #include <iostream>
 using namespace std;
 
@@ -50,7 +51,13 @@ Grass::Grass(int x, int y) {
     setColor(0,255,0);
 }
 void Grass::draw() const {
-    /* todo: GRAPHICS */
+    glBegin(GL_QUADS);
+    glColor3f(fill.red, fill.green, fill.blue);
+    glVertex2i(x_coord*20, y_coord*20);
+    glVertex2i((x_coord*20)+20, y_coord*20);
+    glVertex2i((x_coord*20)+20, (y_coord*20)+20);
+    glVertex2i(x_coord*20, (y_coord*20)+20);
+    glEnd();
 }
 
 /* End of Grass Object Class Definitions */
@@ -64,7 +71,13 @@ Water::Water(int x, int y) {
     setColor(0,0,255);
 }
 void Water::draw() const {
-    /* todo: GRAPHICS */
+    glBegin(GL_QUADS);
+    glColor3f(fill.red, fill.green, fill.blue);
+    glVertex2i(x_coord*20, y_coord*20);
+    glVertex2i((x_coord*20)+20, y_coord*20);
+    glVertex2i((x_coord*20)+20, (y_coord*20)+20);
+    glVertex2i(x_coord*20, (y_coord*20)+20);
+    glEnd();
 }
 
 /* End of Water Object Class Definitions */

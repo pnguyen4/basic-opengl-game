@@ -1,4 +1,5 @@
 #include "level.hpp"
+#include "moving_object.hpp"
 #include <iostream>
 using namespace std;
 
@@ -10,6 +11,7 @@ Level::Level(int width, int height) {
     max_width = width;
     max_height = height;
     map.resize(width);
+
     for (int w = 0; w < width; ++w) {
         map[w].resize(height);
     }
@@ -19,7 +21,9 @@ Level::Level(int width, int height) {
 			map[w][h] = make_unique<Grass>(w,h);
 		}
 	}
+
 	moving.push_back(make_unique<Enemy>(1,1,2,2));
+    this_player = new Player(3,3,10);
 }
 
 Level::Level(int selector) {
@@ -47,17 +51,18 @@ void Level::moveObjects() {
 }
 
 void Level::renderObjects() {
-	for (int i = 0; i < map.size(); ++i) {
-		for (int j = 0; j < map[i].size(); ++j) {
+	for (int i = 0; i < max_width; ++i) {
+		for (int j = 0; j < max_height; ++j) {
 			map[i][j]->draw();
 		}
 	}
 	for (int k = 0; k < moving.size(); ++k) {
 		moving[k]->draw();
 	}
-	this_player.draw();
+	this_player->draw();
 }
 
 int Level::getMaxWidth() const { return max_width; }
 int Level::getMaxHeight() const { return max_height; }
+Player* Level::getPlayer() { return this_player; }
 
