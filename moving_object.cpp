@@ -91,10 +91,18 @@ void Player::down() {
     set_y_coord(get_y_coord() + 1);
 }
 
-void Player::left(int step) { x_coord - step; }
-void Player::right(int step) { x_coord + step; }
-void Player::up(int step) { y_coord - step; }
-void Player::down(int step) { y_coord + step; }
+void Player::left(int step) {
+    set_x_coord(get_x_coord() - step);
+}
+void Player::right(int step) {
+    set_x_coord(get_x_coord() + step);
+}
+void Player::up(int step) {
+    set_y_coord(get_y_coord() - step);
+}
+void Player::down(int step) {
+    set_y_coord(get_y_coord() + step);
+}
 
 double Player::calcSpeed(double terrain_speed) const {
     if (terrain_speed > 0) {
@@ -145,15 +153,31 @@ void Enemy::setStrength(double str) {
     }
 }
 
-void Enemy::left() { x_coord - 1; }
-void Enemy::right() { x_coord + 1; }
-void Enemy::up() { y_coord - 1; }
-void Enemy::down() { y_coord + 1; }
+void Enemy::left() {
+    set_x_coord(get_x_coord() - 1);
+}
+void Enemy::right() {
+    set_x_coord(get_x_coord() + 1);
+}
+void Enemy::up() {
+    set_y_coord(get_y_coord() - 1);
+}
+void Enemy::down() {
+    set_y_coord(get_y_coord() + 1);
+}
 
-void Enemy::left(int step) { x_coord - step; }
-void Enemy::right(int step) { x_coord + step; }
-void Enemy::up(int step) { y_coord - step; }
-void Enemy::down(int step) {y_coord + step; }
+void Enemy::left(int step) {
+    set_x_coord(get_x_coord() - step);
+}
+void Enemy::right(int step) {
+    set_x_coord(get_x_coord() + step);
+}
+void Enemy::up(int step) {
+    set_y_coord(get_y_coord() - step);
+}
+void Enemy::down(int step) {
+    set_y_coord(get_y_coord() + step);
+}
 
 double Enemy::calcSpeed(double terrain_speed) const {
     if (terrain_speed > 0) {
