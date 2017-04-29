@@ -15,7 +15,7 @@ class Level {
         vector<unique_ptr<MovingObject>> moving;
 
         virtual void moveObjects(); //called by render
-		Player this_player;
+		Player* this_player;
 
     public:
 
@@ -26,6 +26,7 @@ class Level {
 		~Level();
         int getMaxWidth() const;
         int getMaxHeight() const;
+        Player* getPlayer();
 
         /*
          * Requires: map and moving vectors must have dimensions >0
