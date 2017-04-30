@@ -239,16 +239,24 @@ void kbdS(int key, int x, int y) {
     if (screen == playgame) {
         switch(key) {
             case GLUT_KEY_DOWN:
-                player->down();
+                if (player->get_y_coord() < (map->getMaxHeight() -1)) {
+                    player->down();
+                }
                 break;
             case GLUT_KEY_LEFT:
-                player->left();
+                if (player->get_y_coord() < 0) {
+                    player->left();
+                }
                 break;
             case GLUT_KEY_RIGHT:
-                player->right();
+                if (player->get_x_coord() < (map->getMaxWidth() -1)) {
+                    player->right();
+                }
                 break;
             case GLUT_KEY_UP:
-                player->up();
+                if (player->get_y_coord() > 0) {
+                    player->up();
+                }
                 break;
         }
         if(player->get_y_coord() == 0) {
