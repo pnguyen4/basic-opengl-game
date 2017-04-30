@@ -23,6 +23,10 @@ class Level {
 		Level(int width, int height);
         Level(int selector);
 
+        //pseudo constructors
+        void Init();
+        void Init(int width, int height);
+
 		~Level();
         int getMaxWidth() const;
         int getMaxHeight() const;

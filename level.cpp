@@ -3,9 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Level::Level() {
-	Level(10, 20);
-}
+Level::Level():Level(10,20) { }
 
 Level::Level(int width, int height) {
     max_width = width;
@@ -23,14 +21,34 @@ Level::Level(int width, int height) {
 	}
 
 	moving.push_back(make_unique<Enemy>(1,1,2,2));
-    this_player = new Player(3,3,10);
+    this_player = new Player(width/2,height-1,10);
+}
+
+void Level::Init(int width, int height) {
+    max_width = width;
+    max_height = height;
+    map.resize(width);
+
+    for (int w = 0; w < width; ++w) {
+        map[w].resize(height);
+    }
+
+	for (int w = 0; w < width; ++w) {
+		for (int h = 0; h < height; ++h) {
+			map[w][h] = make_unique<Grass>(w,h);
+		}
+	}
+
+	moving.push_back(make_unique<Enemy>(1,1,2,2));
+    this_player = new Player(width/2,height-1,10);
+
 }
 
 Level::Level(int selector) {
     switch(selector) {
-        case 1: Level();
+        case 1: Init(10,20);
                 break;
-        case 2: Level();
+        case 2: Init(10,20);
                 for (int w = 0; w < 10; ++w) {
                     map[w][10] = make_unique<Water>(w,10);
                 }
