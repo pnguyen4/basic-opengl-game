@@ -3,6 +3,7 @@
 #include "moving_object.hpp"
 #include "terrain_object.hpp"
 #include <iostream>
+#include <string>
 #include <fstream>
 using namespace std;
 enum screen_state {title, menu, playgame, endgame};
@@ -15,8 +16,8 @@ int mouse_x, mouse_y;
 int wd;
 int cursor_state; // used in menu hover, 0 is no highlight, 1 is top, 2 is bottom
 int player_state; // main game mechanic. 0 is playing, 1 is death, 2 level complete, 3 is win
-Level* map;
-Player* player;
+Level* map = nullptr;
+Player* player = nullptr;
 
 void saveLevel() {
     ofstream myfile;
@@ -172,7 +173,7 @@ void init() {
     player = map->getPlayer();
     player_state = 0;
 
-    width = map-> getMaxWidth() * 20;
+    width = map->getMaxWidth() * 20;
     height = map->getMaxHeight() * 20;
     mouse_x = mouse_y = 0;
 }
