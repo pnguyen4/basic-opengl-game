@@ -116,6 +116,7 @@ double Player::calcSpeed(double terrain_speed) const {
 }
 
 void Player::draw() const {
+	
 	//draw head
 	glBegin(GL_TRIANGLE_FAN);
 	glColor3f(0, 0, 0);
@@ -181,7 +182,7 @@ void Player::draw() const {
 			(get_y_coord()*side_length + side_length / 1.7 + side_length / 5) + .08*side_length * sin(i * M_PI / 180.0));
 	}
 	glEnd();
-
+	
 	glBegin(GL_TRIANGLE_FAN);
 	glColor3f(0, 0, 0);
 	glVertex2i(get_x_coord()*side_length + side_length / 2 + side_length / 5, get_y_coord()*side_length + side_length / 1.7 + side_length / 5);

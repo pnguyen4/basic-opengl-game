@@ -14,6 +14,7 @@ class MovingObject : public GameObject {
         // color border;
         double movement_speed;
 	direction dir;
+
     public:
         MovingObject();
         virtual ~MovingObject();
