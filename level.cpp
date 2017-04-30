@@ -80,6 +80,20 @@ void Level::renderObjects() {
 	this_player->draw();
 }
 
+bool Level::checkOverlap() {
+
+	bool overlap = false;
+	// loop through enemies, see if they overlap with player
+	for (int i = 0; i < moving.size(); ++i) {
+		// Since moving_objects move in steps equal to their side length,
+		// there should either be complete overlap or no overlap...
+		if (this_player->get_x_coord() == moving[i]->get_x_coord() && this_player->get_y_coord() == moving[i]->get_y_coord()) {
+			overlap = true;
+		}
+	}
+	return overlap;
+}
+
 int Level::getMaxWidth() const { return max_width; }
 int Level::getMaxHeight() const { return max_height; }
 Player* Level::getPlayer() { return this_player; }
