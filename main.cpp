@@ -259,13 +259,20 @@ void kbdS(int key, int x, int y) {
                 }
                 break;
         }
+
+		if(map->checkOverlap()) { 
+			player_state = 1; // you died
+			screen = endgame;
+		}
+
         if(player->get_y_coord() == 0) {
             screen = endgame;
             if(level_id < 2) {
                 player_state = 2; // you beat the level
             } else { player_state = 3; } // you win the game
         }
-        // TODO: check overlap with enemy, if so, set player_state to 1 and screen=endgame
+        // TODO: Find way to determine if player is overlapping with enemy or power-up
+		// (Current assumption is that ALL elements of vector "moving" are enemies)
     }
     glutPostRedisplay();
     return;

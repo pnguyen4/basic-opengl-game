@@ -35,6 +35,13 @@ class Level {
         /*
          * Requires: map and moving vectors must have dimensions >0
          * Modifies: nothing
+         * Effects: returns true if player overlaps with any moving objects, false otherwise
+         */
+        bool checkOverlap();
+
+        /*
+         * Requires: map and moving vectors must have dimensions >0
+         * Modifies: nothing
          * Effects: renders player and moving objects on terrain map
          */
         virtual void renderObjects();
