@@ -244,7 +244,7 @@ void kbdS(int key, int x, int y) {
                 }
                 break;
             case GLUT_KEY_LEFT:
-                if (player->get_y_coord() < 0) {
+                if (player->get_x_coord() > 0) {
                     player->left();
                 }
                 break;
