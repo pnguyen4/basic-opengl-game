@@ -51,13 +51,13 @@ Grass::Grass(int x, int y) {
     setColor(0,255,0);
 }
 void Grass::draw() const {
-    glBegin(GL_QUADS);
-    glColor3f(fill.red, fill.green, fill.blue);
-    glVertex2i(x_coord*20, y_coord*20);
-    glVertex2i((x_coord*20)+20, y_coord*20);
-    glVertex2i((x_coord*20)+20, (y_coord*20)+20);
-    glVertex2i(x_coord*20, (y_coord*20)+20);
-    glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(fill.red, fill.green, fill.blue);
+	glVertex2i(x_coord*side_length, y_coord*side_length);
+	glVertex2i((x_coord*side_length) + side_length, y_coord*side_length);
+	glVertex2i((x_coord*side_length) + side_length, (y_coord*side_length) + side_length);
+	glVertex2i(x_coord*side_length, (y_coord*side_length) + side_length);
+	glEnd();
 }
 
 /* End of Grass Object Class Definitions */
@@ -71,13 +71,13 @@ Water::Water(int x, int y) {
     setColor(0,0,255);
 }
 void Water::draw() const {
-    glBegin(GL_QUADS);
-    glColor3f(fill.red, fill.green, fill.blue);
-    glVertex2i(x_coord*20, y_coord*20);
-    glVertex2i((x_coord*20)+20, y_coord*20);
-    glVertex2i((x_coord*20)+20, (y_coord*20)+20);
-    glVertex2i(x_coord*20, (y_coord*20)+20);
-    glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(fill.red, fill.green, fill.blue);
+	glVertex2i(x_coord*side_length, y_coord*side_length);
+	glVertex2i((x_coord*side_length) + side_length, y_coord*side_length);
+	glVertex2i((x_coord*side_length) + side_length, (y_coord*side_length) + side_length);
+	glVertex2i(x_coord*side_length, (y_coord*side_length) + side_length);
+	glEnd();
 }
 
 /* End of Water Object Class Definitions */
