@@ -1,5 +1,5 @@
-#ifndef level
-#define level
+#ifndef level_h
+#define level_h
 
 #include <memory>
 #include <vector>
@@ -16,7 +16,7 @@ class Level {
 
         virtual void moveObjects(); //called by render
         virtual void update_directions();
-		Player* this_player;
+		Player* this_player = nullptr;
 
     public:
 
