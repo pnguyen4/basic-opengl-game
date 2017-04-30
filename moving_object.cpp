@@ -2,6 +2,10 @@
 #include "level.hpp"
 #include "graphics.hpp"
 #include <iostream>
+
+#define _USE_MATH_DEFINES 
+#include <math.h>
+
 using namespace std;
 /* Moving Object Class Definitions */
 
