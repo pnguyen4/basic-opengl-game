@@ -1,5 +1,5 @@
-#ifndef terrain_object
-#define terrain_object
+#ifndef terrain_object_h
+#define terrain_object_h
 
 #include "object.hpp"
 using namespace std;

@@ -1,5 +1,5 @@
-#ifndef moving_object
-#define moving_object
+#ifndef moving_object_h
+#define moving_object_h
 
 #include "object.hpp"
 using namespace std;

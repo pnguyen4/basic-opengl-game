@@ -276,13 +276,52 @@ double Enemy::attack(Player *p) {
 }
 
 void Enemy::draw() const {
-    glBegin(GL_QUADS);
-    glColor3f(fill.red, fill.green, fill.blue);
-    glVertex2i(x_coord*20, y_coord*20);
-    glVertex2i((x_coord*20)+20, y_coord*20);
-    glVertex2i((x_coord*20)+20, (y_coord*20)+20);
-    glVertex2i(x_coord*20, (y_coord*20)+20);
-    glEnd();
+	//leg 1/8
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i((get_x_coord() * side_length), (get_y_coord() * side_length));
+	glVertex2i((get_x_coord() * side_length) + 1, (get_y_coord() * side_length));
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2) + 1, (get_y_coord() * side_length) + (side_length / 2));
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2), (get_y_coord() * side_length) + (side_length / 2));
+	glEnd();
+	//leg 2/8
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i((get_x_coord() * side_length) + side_length, (get_y_coord() * side_length));
+	glVertex2i((get_x_coord() * side_length) + side_length + 1, (get_y_coord() * side_length) );
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2) + 1, (get_y_coord() * side_length) + (side_length / 2));
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2), (get_y_coord() * side_length) + (side_length / 2));
+	glEnd();
+	//leg 3/8
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i((get_x_coord() * side_length), (get_y_coord() * side_length) + side_length);
+	glVertex2i((get_x_coord() * side_length) + 1, (get_y_coord() * side_length) + side_length);
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2) + 1, (get_y_coord() * side_length) + (side_length / 2));
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2), (get_y_coord() * side_length) + (side_length / 2));
+	glEnd();
+	//leg 4/8
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i((get_x_coord() * side_length) + side_length, (get_y_coord() * side_length) + side_length);
+	glVertex2i((get_x_coord() * side_length) + side_length + 1, (get_y_coord() * side_length) + side_length);
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2) + 1, (get_y_coord() * side_length) + (side_length / 2));
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2), (get_y_coord() * side_length) + (side_length / 2));
+	glEnd();
+	//leg 5/8
+	//leg 6/8
+	//leg 7/8
+	//leg 8/8
+	//body
+	glBegin(GL_TRIANGLE_FAN);
+	glColor3f(0, 0, 0);
+	glVertex2i(get_x_coord()*side_length + side_length / 2, get_y_coord()*side_length + side_length / 2);
+	for (int i = 0; i <= 360; ++i) {
+		glVertex2i((get_x_coord()*side_length + side_length / 2) + .3*side_length * cos(i * M_PI / 180.0),
+			(get_y_coord()*side_length + side_length / 2) + .3*side_length * sin(i * M_PI / 180.0));
+	}
+	glEnd();
+
 }
 
 /* End of Player Class Definitions */
