@@ -8,5 +8,11 @@ more/deadlier enemies.
 
 Build Instructions:
 
-Linux: just use Makefile. Use command "make" while in project folder.
-Windows: Visual Studio should include proper files.
+- Linux: just use Makefile. Use command "make" while in project folder.
+
+- Windows: Visual Studio should include proper files.
+
+
+Controls:
+-movement: arrow keys
+-toggle on/off menu: esc

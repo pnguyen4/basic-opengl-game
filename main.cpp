@@ -5,12 +5,16 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
+enum screen_state {title, menu, playgame, endgame};
 
-int level_id = 1;
+screen_state screen; // for display
+int level_id = 1; // loading levels
 string file_name = "savefile.txt";
 int width, height;
 int mouse_x, mouse_y;
 int wd;
+int cursor_state; // used in menu hover, 0 is no highlight, 1 is top, 2 is bottom
+int player_state; // main game mechanic. 0 is playing, 1 is death, 2 level complete, 3 is win
 Level* map;
 Player* player;
 
@@ -29,17 +33,144 @@ int loadLevel() {
     return i;
 }
 
+void showTitle(int state) {
+    glBegin(GL_QUADS);
+    glColor3f(.5,0,.5);
+    glVertex2i(width/4,height/4);
+    glVertex2i(width-(width/4),height/4);
+    glVertex2i(width-(width/4),height-(height/4));
+    glVertex2i(width/4,height-(height/4));
+    glEnd();
+    glBegin(GL_QUADS);
+    glColor3f(1,0,1);
+    glVertex2i(width/4,height/2);
+    glVertex2i(width-(width/4),height/2);
+    glVertex2i(width-(width/4),(height/2)+2);
+    glVertex2i(width/4,(height/2)+2);
+    glEnd();
+    if(state == 1) {
+        glBegin(GL_QUADS);
+        glColor3f(1,0,1);
+        glVertex2i(width/4,height/4);
+        glVertex2i(width-(width/4),height/4);
+        glVertex2i(width-(width/4),height/2);
+        glVertex2i(width/4,height/2);
+        glEnd();
+    }
+    if(state == 2) {
+        glBegin(GL_QUADS);
+        glColor3f(1,0,1);
+        glVertex2i(width/4,height/2);
+        glVertex2i(width-(width/4),height/2);
+        glVertex2i(width-(width/4),height-(height/4));
+        glVertex2i(width/4,height-(height/4));
+        glEnd();
+    }
+    string m1 = "CLICK TO LOAD";
+    glColor3f(1,1,1);
+    glRasterPos2i(1.25*width/4,1.5*height/4);
+    for (int i = 0; i < m1.length(); ++i) {
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, m1[i]);
+    }
+    string m2 = "CLICK TO START";
+    glColor3f(1,1,1);
+    glRasterPos2i(1.25*width/4,1.25*height/2);
+    for (int i = 0; i < m2.length(); ++i) {
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, m2[i]);
+    }
+    string lvl = "LEVEL LOADED: " + to_string(level_id);
+    glColor3f(1,1,1);
+    glRasterPos2i(5,10);
+    for (int i = 0; i < lvl.length(); ++i) {
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, lvl[i]);
+    }
+
+}
+
+void playGame() {
+    map->renderObjects();
+}
+
+void showMenu(int state) {
+    map->renderObjects();
+    // state == 0 should be default, not a special case
+    glBegin(GL_QUADS);
+    glColor3f(.5,0,.5);
+    glVertex2i(width/4,height/4);
+    glVertex2i(width-(width/4),height/4);
+    glVertex2i(width-(width/4),height-(height/4));
+    glVertex2i(width/4,height-(height/4));
+    glEnd();
+    glBegin(GL_QUADS);
+    glColor3f(1,0,1);
+    glVertex2i(width/4,height/2);
+    glVertex2i(width-(width/4),height/2);
+    glVertex2i(width-(width/4),(height/2)+2);
+    glVertex2i(width/4,(height/2)+2);
+    glEnd();
+    if(state == 1) {
+        glBegin(GL_QUADS);
+        glColor3f(1,0,1);
+        glVertex2i(width/4,height/4);
+        glVertex2i(width-(width/4),height/4);
+        glVertex2i(width-(width/4),height/2);
+        glVertex2i(width/4,height/2);
+        glEnd();
+    }
+    if(state == 2) {
+        glBegin(GL_QUADS);
+        glColor3f(1,0,1);
+        glVertex2i(width/4,height/2);
+        glVertex2i(width-(width/4),height/2);
+        glVertex2i(width-(width/4),height-(height/4));
+        glVertex2i(width/4,height-(height/4));
+        glEnd();
+    }
+    string m1 = "CLICK TO SAVE";
+    glColor3f(1,1,1);
+    glRasterPos2i(1.25*width/4,1.5*height/4);
+    for (int i = 0; i < m1.length(); ++i) {
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, m1[i]);
+    }
+    string m2 = "CLICK TO QUIT";
+    glColor3f(1,1,1);
+    glRasterPos2i(1.25*width/4,1.25*height/2);
+    for (int i = 0; i < m2.length(); ++i) {
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, m2[i]);
+    }
+}
+
+void endGame(int pstate) {
+    glBegin(GL_QUADS);
+    glColor3f(0,0,0);
+    glVertex2i(0,0);
+    glVertex2i(width,0);
+    glVertex2i(width,height);
+    glVertex2i(0,height);
+    glEnd();
+    string end;
+    if(pstate == 1) {
+        end = "DEAD. RESTART(Y/N)?";
+    }
+    else if(pstate == 2) {
+        end = "CLICK FOR NEXT LEVEL";
+    }
+    else if(pstate == 3) {
+        end = "WIN! RESTART(Y/N)?";
+    }
+    glColor3f(1,1,1);
+    glRasterPos2i(width/4,height/2);
+    for (int i = 0; i < end.length(); ++i) {
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, end[i]);
+    }
+}
+
 void init() {
 
-    /*
-    saveLevel();
-    int test = loadLevel();
-    cout << "input from text file: " << test << endl;
-    cout << endl;
-    */
-
-    map = new Level(10,20);
+    screen = title;
+    map = new Level(level_id);
     player = map->getPlayer();
+    player_state = 0;
 
     width = map-> getMaxWidth() * 20;
     height = map->getMaxHeight() * 20;
@@ -60,31 +191,88 @@ void display() {
     glClear(GL_COLOR_BUFFER_BIT);
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-    map->renderObjects();
+    switch(screen) {
+        case playgame:
+            playGame();
+            break;
+        case menu:
+            showMenu(cursor_state);
+            break;
+        case title:
+            showTitle(cursor_state);
+            break;
+        case endgame:
+            endGame(player_state);
+    }
 
     glFlush();
 }
 
 void kbd(unsigned char key, int x, int y) {
+    // pressed escape
+    if (key == 27) {
+        if (screen == playgame) {
+            screen = menu;
+        }
+        else if (screen == menu) {
+            screen = playgame;
+        }
+    }
+    if (screen == endgame && (player_state == 3 || player_state == 1)) {
+        // pressed y
+        if (key == 89 || key == 121) {
+            level_id = 1;
+            init();
+            screen = playgame;
+            // pressed n
+        } else if (key == 78 || key == 110) {
+            glutDestroyWindow(wd);
+            exit(0);
+        }
+    }
 
     glutPostRedisplay();
     return;
 }
 
 void kbdS(int key, int x, int y) {
-    switch(key) {
-        case GLUT_KEY_DOWN:
-            player->down();
-            break;
-        case GLUT_KEY_LEFT:
-            player->left();
-            break;
-        case GLUT_KEY_RIGHT:
-            player->right();
-            break;
-        case GLUT_KEY_UP:
-            player->up();
-            break;
+    if (screen == playgame) {
+        switch(key) {
+            case GLUT_KEY_DOWN:
+                if (player->get_y_coord() < (map->getMaxHeight() -1)) {
+                    player->down();
+                }
+                break;
+            case GLUT_KEY_LEFT:
+                if (player->get_x_coord() > 0) {
+                    player->left();
+                }
+                break;
+            case GLUT_KEY_RIGHT:
+                if (player->get_x_coord() < (map->getMaxWidth() -1)) {
+                    player->right();
+                }
+                break;
+            case GLUT_KEY_UP:
+                if (player->get_y_coord() > 0) {
+                    player->up();
+                }
+                break;
+        }
+
+		if(map->checkOverlap()) { 
+			player_state = 1; // you died
+			screen = endgame;
+		}
+
+        if(player->get_y_coord() == 0) {
+            screen = endgame;
+            if(level_id < 2) {
+                player_state = 2; // you beat the level
+            } else { player_state = 3; } // you win the game
+        }
+        // TODO: Find way to determine if player is overlapping with enemy or power-up
+		// (Current assumption is that ALL elements of vector "moving" are enemies)
     }
     glutPostRedisplay();
     return;
@@ -95,10 +283,43 @@ void cursor(int x, int y) {
     mouse_x = x;
     mouse_y = y;
 
-    glutPostRedisplay();
+    if(x >= width/4 && x <= width-(width/4) && y >= height/4 && y <= height/2) {
+        cursor_state = 1;
+    }
+    else if(x >= width/4 && x <= width-(width/4) && y <= height-(height/4) && y >= height/2) {
+        cursor_state = 2;
+    }
+    else { cursor_state = 0; }
 }
 
 void mouse(int button, int state, int x, int y) {
+    if(x >= width/4 && x <= width-(width/4) && y >= height/4
+        && y <= height/2 && screen == title) {
+        level_id = loadLevel();
+        if(level_id > 2) {
+            cout << "error, no such level exists" << endl;
+            level_id = 1;
+        }
+        init();
+    }
+    else if(x >= width/4 && x <= width-(width/4) && y <= height-(height/4)
+            && y >= height/2 && screen == title) {
+        screen = playgame;
+    }
+    if(x >= width/4 && x <= width-(width/4) && y >= height/4
+        && y <= height/2 && screen == menu) {
+        saveLevel();
+    }
+    else if(x >= width/4 && x <= width-(width/4) && y <= height-(height/4)
+            && y >= height/2 && screen == menu) {
+        glutDestroyWindow(wd);
+        exit(0);
+    }
+    if(screen == endgame && player_state == 2) {
+        level_id++;
+        init();
+        screen = playgame;
+    }
 
     glutPostRedisplay();
 }
@@ -109,8 +330,6 @@ void timer(int extra) {
 }
 
 int main(int argc, char** argv) {
-
-
     init();
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA);

@@ -23,10 +23,21 @@ class Level {
 		Level(int width, int height);
         Level(int selector);
 
+        //pseudo constructors
+        void Init();
+        void Init(int width, int height);
+
 		~Level();
         int getMaxWidth() const;
         int getMaxHeight() const;
         Player* getPlayer();
+
+        /*
+         * Requires: map and moving vectors must have dimensions >0
+         * Modifies: nothing
+         * Effects: returns true if player overlaps with any moving objects, false otherwise
+         */
+        bool checkOverlap();
 
         /*
          * Requires: map and moving vectors must have dimensions >0

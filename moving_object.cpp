@@ -18,7 +18,7 @@ void MovingObject::set_x_coord(int x) {
         x_coord = x;
     } else {
         cout << "error: negative value for x" << endl;
-        x_coord = 1;
+        x_coord = 0;
     }
 }
 
@@ -27,7 +27,7 @@ void MovingObject::set_y_coord(int y) {
         y_coord = y;
     } else {
         cout << "error: negative value for y" << endl;
-        y_coord = 1;
+        y_coord = 0;
     }
 }
 
