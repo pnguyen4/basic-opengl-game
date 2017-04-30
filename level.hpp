@@ -12,9 +12,10 @@ class Level {
         int max_width;
         int max_height;
         vector<vector<unique_ptr<TerrainObject>>> map;
-        vector<unique_ptr<MovingObject>> moving;
+        vector<unique_ptr<Enemy>> moving;
 
         virtual void moveObjects(); //called by render
+        virtual void update_directions();
 		Player* this_player;
 
     public:

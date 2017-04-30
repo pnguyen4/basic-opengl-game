@@ -259,12 +259,13 @@ void kbdS(int key, int x, int y) {
                 }
                 break;
         }
-
+        // this now happens in timer()
+        /* 
 		if(map->checkOverlap()) { 
 			player_state = 1; // you died
 			screen = endgame;
 		}
-
+        */
         if(player->get_y_coord() == 0) {
             screen = endgame;
             if(level_id < 2) {
@@ -325,7 +326,13 @@ void mouse(int button, int state, int x, int y) {
 }
 
 void timer(int extra) {
-    glutTimerFunc(30, timer, 0);
+    if (screen == playgame) {
+    	if(map->checkOverlap()) { 
+			player_state = 1; // you died
+			screen = endgame;
+		}
+    }
+    glutTimerFunc(120, timer, 0);
     glutPostRedisplay();
 }
 
