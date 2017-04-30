@@ -4,6 +4,8 @@
 #include "object.hpp"
 using namespace std;
 
+enum direction {L, R};
+
 class MovingObject : public GameObject {
     protected:
         int x_coord;
@@ -11,6 +13,7 @@ class MovingObject : public GameObject {
         color fill;
         // color border;
         double movement_speed;
+	direction dir;
     public:
         MovingObject();
         virtual ~MovingObject();
@@ -30,6 +33,7 @@ class MovingObject : public GameObject {
         virtual color getColor() const;
         virtual double getHealth() const = 0;
         virtual double getStrength() const = 0;
+
         /*
          * Requires: parameters to be >0 and <max-width
          * Modifies: private fields
@@ -38,7 +42,6 @@ class MovingObject : public GameObject {
         virtual void set_x_coord(int x);
         virtual void set_y_coord(int y);
         virtual void setMovementSpeed(int speed);
-
         virtual void setColor(double r, double g, double b);
 
 };
@@ -92,6 +95,7 @@ class Enemy: public MovingObject {
     private:
         double health;
         double strength;
+	direction dir;
     public:
         Enemy(int x, int y, double hp, double str);
 
@@ -125,10 +129,12 @@ class Enemy: public MovingObject {
         // getters return field vars. That's literally it.
         virtual double getHealth() const override;
         virtual double getStrength() const override;
+	virtual direction get_direction() const;
 
         // setters
         virtual void setHealth(double hp);
         virtual void setStrength(double str);
+	virtual void toggle_direction();
 
         /*
          * Requires: nothing

@@ -62,13 +62,30 @@ Level::~Level() {
 
 }
 
-void Level::moveObjects() {
+void Level::update_directions() {
 	for (int i = 0; i < moving.size(); ++i) {
-		moving[i]->left();
+	    if ((moving[i]->get_x_coord() <= 1) && (moving[i]->get_direction() == L)) {
+		    moving[i]->toggle_direction();
+        } else if ((moving[i]->get_x_coord() >= (getMaxWidth() - 1)) && (moving[i]->get_direction() == R)) {
+            moving[i]->toggle_direction();
+	    }
+	}
+}
+
+void Level::moveObjects() {
+
+	for (int i = 0; i < moving.size(); ++i) {
+		if (moving[i]->get_direction() == L) {
+			moving[i]->left();
+		} else {
+			moving[i]->right();
+		}
 	}
 }
 
 void Level::renderObjects() {
+    update_directions();
+    moveObjects();
 	for (int i = 0; i < max_width; ++i) {
 		for (int j = 0; j < max_height; ++j) {
 			map[i][j]->draw();

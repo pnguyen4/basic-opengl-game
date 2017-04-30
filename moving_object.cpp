@@ -3,6 +3,7 @@
 #include "graphics.hpp"
 #include <iostream>
 using namespace std;
+
 /* Moving Object Class Definitions */
 
 MovingObject::MovingObject() { }
@@ -132,10 +133,13 @@ Enemy::Enemy(int x, int y, double hp, double str) {
     setStrength(str);
     setMovementSpeed(1);
     setColor(0,0.5,0.8);
+	dir = R; // TODO: make init_direction function that sets initial direction of each enemy randomly
 }
 
 double Enemy::getHealth() const { return health; }
 double Enemy::getStrength() const { return strength; }
+direction Enemy::get_direction() const { return dir; }
+
 void Enemy::setHealth(double hp) {
     if (hp > 0) {
         health = hp;
@@ -151,6 +155,14 @@ void Enemy::setStrength(double str) {
         cout << "error: negative value for strength value" << endl;
         strength = 1;
     }
+}
+
+void Enemy::toggle_direction() {
+	if (dir == L) {
+		dir = R;
+	} else {
+		dir = L;
+	}
 }
 
 void Enemy::left() {

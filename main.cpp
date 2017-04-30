@@ -325,6 +325,7 @@ void mouse(int button, int state, int x, int y) {
 }
 
 void timer(int extra) {
+
     glutTimerFunc(30, timer, 0);
     glutPostRedisplay();
 }
