@@ -11,7 +11,7 @@ class GameObject {
         };
         virtual void draw() const = 0;
 
-		int side_length = 50;
+	int side_length = 20;
 };
 
 #endif
