@@ -111,13 +111,81 @@ double Player::calcSpeed(double terrain_speed) const {
 }
 
 void Player::draw() const {
-    glBegin(GL_QUADS);
-    glColor3f(fill.red, fill.green, fill.blue);
-    glVertex2i(x_coord*20, y_coord*20);
-    glVertex2i((x_coord*20)+20, y_coord*20);
-    glVertex2i((x_coord*20)+20, (y_coord*20)+20);
-    glVertex2i(x_coord*20, (y_coord*20)+20);
-    glEnd();
+	//draw head
+	glBegin(GL_TRIANGLE_FAN);
+	glColor3f(0, 0, 0);
+	glVertex2i(get_x_coord()*side_length + side_length / 2, get_y_coord()*side_length + side_length / 3);
+	for (int i = 0; i <= 360; ++i) {
+		glVertex2i((get_x_coord()*side_length + side_length / 2) + .3*side_length * cos(i * M_PI / 180.0),
+			(get_y_coord()*side_length + side_length / 3) + .3*side_length * sin(i * M_PI / 180.0));
+	}
+	glEnd();
+
+	//draw body
+	glBegin(GL_TRIANGLE_FAN);
+	glColor3f(255, 0, 0);
+	glVertex2i(get_x_coord()*side_length + side_length / 2, get_y_coord()*side_length + side_length / 1.7);
+	for (int i = 0; i <= 360; ++i) {
+		glVertex2i((get_x_coord()*side_length + side_length / 2) + .4*side_length * cos(i * M_PI / 180.0),
+			(get_y_coord()*side_length + side_length / 1.7) + .4*side_length * sin(i * M_PI / 180.0));
+	}
+	glEnd();
+
+	//draw spots
+	glBegin(GL_TRIANGLE_FAN);
+	glColor3f(0, 0, 0);
+	glVertex2i(get_x_coord()*side_length + side_length / 2 - side_length / 10, get_y_coord()*side_length + side_length / 1.7);
+	for (int i = 0; i <= 360; ++i) {
+		glVertex2i((get_x_coord()*side_length + side_length / 2 - side_length / 10) + .08*side_length * cos(i * M_PI / 180.0),
+			(get_y_coord()*side_length + side_length / 1.7) + .08*side_length * sin(i * M_PI / 180.0));
+	}
+	glEnd();
+
+	glBegin(GL_TRIANGLE_FAN);
+	glColor3f(0, 0, 0);
+	glVertex2i(get_x_coord()*side_length + side_length / 2 + side_length / 10, get_y_coord()*side_length + side_length / 1.7);
+	for (int i = 0; i <= 360; ++i) {
+		glVertex2i((get_x_coord()*side_length + side_length / 2 + side_length / 10) + .08*side_length * cos(i * M_PI / 180.0),
+			(get_y_coord()*side_length + side_length / 1.7) + .08*side_length * sin(i * M_PI / 180.0));
+	}
+	glEnd();
+
+	glBegin(GL_TRIANGLE_FAN);
+	glColor3f(0, 0, 0);
+	glVertex2i(get_x_coord()*side_length + side_length / 2 - side_length / 5, get_y_coord()*side_length + side_length / 1.7 - side_length / 5);
+	for (int i = 0; i <= 360; ++i) {
+		glVertex2i((get_x_coord()*side_length + side_length / 2 - side_length / 5) + .08*side_length * cos(i * M_PI / 180.0),
+			(get_y_coord()*side_length + side_length / 1.7 - side_length / 5) + .08*side_length * sin(i * M_PI / 180.0));
+	}
+	glEnd();
+
+	glBegin(GL_TRIANGLE_FAN);
+	glColor3f(0, 0, 0);
+	glVertex2i(get_x_coord()*side_length + side_length / 2 + side_length / 5, get_y_coord()*side_length + side_length / 1.7 - side_length / 5);
+	for (int i = 0; i <= 360; ++i) {
+		glVertex2i((get_x_coord()*side_length + side_length / 2 + side_length / 5) + .08*side_length * cos(i * M_PI / 180.0),
+			(get_y_coord()*side_length + side_length / 1.7 - side_length / 5) + .08*side_length * sin(i * M_PI / 180.0));
+	}
+	glEnd();
+
+	glBegin(GL_TRIANGLE_FAN);
+	glColor3f(0, 0, 0);
+	glVertex2i(get_x_coord()*side_length + side_length / 2 - side_length / 5, get_y_coord()*side_length + side_length / 1.7 + side_length / 5);
+	for (int i = 0; i <= 360; ++i) {
+		glVertex2i((get_x_coord()*side_length + side_length / 2 - side_length / 5) + .08*side_length * cos(i * M_PI / 180.0),
+			(get_y_coord()*side_length + side_length / 1.7 + side_length / 5) + .08*side_length * sin(i * M_PI / 180.0));
+	}
+	glEnd();
+
+	glBegin(GL_TRIANGLE_FAN);
+	glColor3f(0, 0, 0);
+	glVertex2i(get_x_coord()*side_length + side_length / 2 + side_length / 5, get_y_coord()*side_length + side_length / 1.7 + side_length / 5);
+	for (int i = 0; i <= 360; ++i) {
+		glVertex2i((get_x_coord()*side_length + side_length / 2 + side_length / 5) + .08*side_length * cos(i * M_PI / 180.0),
+			(get_y_coord()*side_length + side_length / 1.7 + side_length / 5) + .08*side_length * sin(i * M_PI / 180.0));
+	}
+	glEnd();
+
 }
 
 /* End of Player Class Definitions */
