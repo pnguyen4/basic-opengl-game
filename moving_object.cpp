@@ -133,7 +133,7 @@ Enemy::Enemy(int x, int y, double hp, double str) {
     setStrength(str);
     setMovementSpeed(1);
     setColor(0,0.5,0.8);
-	dir = R; // TODO: make init_direction function that sets initial direction of each enemy randomly
+	dir = R;
 }
 
 double Enemy::getHealth() const { return health; }

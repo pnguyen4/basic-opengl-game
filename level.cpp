@@ -84,8 +84,8 @@ void Level::moveObjects() {
 }
 
 void Level::renderObjects() {
-    update_directions();
     moveObjects();
+    update_directions();
 	for (int i = 0; i < max_width; ++i) {
 		for (int j = 0; j < max_height; ++j) {
 			map[i][j]->draw();
