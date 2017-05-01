@@ -309,9 +309,37 @@ void Enemy::draw() const {
 	glVertex2i((get_x_coord() * side_length) + (side_length / 2), (get_y_coord() * side_length) + (side_length / 2));
 	glEnd();
 	//leg 5/8
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i((get_x_coord() * side_length), (get_y_coord() * side_length) + side_length / 3);
+	glVertex2i((get_x_coord() * side_length), (get_y_coord() * side_length) + side_length / 3 + 1);
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2) + 1, (get_y_coord() * side_length) + (side_length / 2));
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2), (get_y_coord() * side_length) + (side_length / 2));
+	glEnd();
 	//leg 6/8
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i((get_x_coord() * side_length), (get_y_coord() * side_length) + 2*side_length / 3);
+	glVertex2i((get_x_coord() * side_length), (get_y_coord() * side_length) + 2*side_length / 3 + 1);
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2) + 1, (get_y_coord() * side_length) + (side_length / 2));
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2), (get_y_coord() * side_length) + (side_length / 2));
+	glEnd();
 	//leg 7/8
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i((get_x_coord() * side_length + side_length), (get_y_coord() * side_length) + side_length / 3);
+	glVertex2i((get_x_coord() * side_length + side_length), (get_y_coord() * side_length) + side_length / 3 + 1);
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2) + 1, (get_y_coord() * side_length) + (side_length / 2));
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2), (get_y_coord() * side_length) + (side_length / 2));
+	glEnd();
 	//leg 8/8
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i((get_x_coord() * side_length + side_length), (get_y_coord() * side_length) + 2*side_length / 3);
+	glVertex2i((get_x_coord() * side_length + side_length), (get_y_coord() * side_length) + 2*side_length / 3 + 1);
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2) + 1, (get_y_coord() * side_length) + (side_length / 2));
+	glVertex2i((get_x_coord() * side_length) + (side_length / 2), (get_y_coord() * side_length) + (side_length / 2));
+	glEnd();
 	//body
 	glBegin(GL_TRIANGLE_FAN);
 	glColor3f(0, 0, 0);
