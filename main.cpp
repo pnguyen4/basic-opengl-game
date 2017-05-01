@@ -173,8 +173,8 @@ void init() {
     player = map->getPlayer();
     player_state = 0;
 
-    width = map->getMaxWidth() * 20;
-    height = map->getMaxHeight() * 20;
+    width = map->getMaxWidth() * player->side_length;
+    height = map->getMaxHeight() * player->side_length;
     mouse_x = mouse_y = 0;
 }
 
