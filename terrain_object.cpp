@@ -12,6 +12,7 @@ int TerrainObject::get_x_coord() const { return x_coord; }
 int TerrainObject::get_y_coord() const { return y_coord; }
 double TerrainObject::getTerrainSpeed() const { return terrain_speed; }
 GameObject::color TerrainObject::getColor() { return fill; }
+terrain TerrainObject::getTerrainType() const { return terrain_type; }
 
 void TerrainObject::set_x_coord(int x) {
     if (x >= 0) {
@@ -49,6 +50,7 @@ Grass::Grass(int x, int y) {
     set_x_coord(x);
     set_y_coord(y);
     setColor(0,255,0);
+	terrain_type = grass;
 }
 void Grass::draw() const {
 	glBegin(GL_QUADS);
@@ -69,6 +71,7 @@ Water::Water(int x, int y) {
     set_x_coord(x);
     set_y_coord(y);
     setColor(0,0,255);
+	terrain_type = water;
 }
 void Water::draw() const {
 	glBegin(GL_QUADS);
