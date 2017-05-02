@@ -261,8 +261,8 @@ void kbdS(int key, int x, int y) {
                 break;
         }
         // this now happens in timer()
-        /* 
-		if(map->checkOverlap()) { 
+        /*
+		if(map->checkOverlap()) {
 			player_state = 1; // you died
 			screen = endgame;
 		}
@@ -276,7 +276,6 @@ void kbdS(int key, int x, int y) {
         // TODO: Find way to determine if player is overlapping with enemy or power-up
 		// (Current assumption is that ALL elements of vector "moving" are enemies)
     }
-    glutPostRedisplay();
     return;
 }
 
@@ -328,7 +327,7 @@ void mouse(int button, int state, int x, int y) {
 
 void timer(int extra) {
     if (screen == playgame) {
-    	if(map->checkOverlap()) { 
+    	if(map->checkOverlap()) {
 			player_state = 1; // you died
 			screen = endgame;
 		}
