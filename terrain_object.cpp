@@ -58,6 +58,63 @@ void Grass::draw() const {
 	glVertex2i((x_coord*side_length) + side_length, (y_coord*side_length) + side_length);
 	glVertex2i(x_coord*side_length, (y_coord*side_length) + side_length);
 	glEnd();
+
+	glBegin(GL_QUADS);
+    glColor3f(.2,.5,.2);
+    glVertex2i(x_coord*side_length+2, y_coord*side_length+2);
+    glVertex2i(x_coord*side_length+4, y_coord*side_length+2);
+    glVertex2i(x_coord*side_length+4, y_coord*side_length+4);
+    glVertex2i(x_coord*side_length+2, y_coord*side_length+4);
+	glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(130.0/255,90.0/255,20.0/255);
+    glVertex2i(x_coord*side_length+10, y_coord*side_length+10);
+    glVertex2i(x_coord*side_length+12, y_coord*side_length+10);
+    glVertex2i(x_coord*side_length+12, y_coord*side_length+12);
+    glVertex2i(x_coord*side_length+10, y_coord*side_length+12);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(55.0/255,80.0/255,10.0/255);
+    glVertex2i(x_coord*side_length+18, y_coord*side_length+18);
+    glVertex2i(x_coord*side_length+20, y_coord*side_length+18);
+    glVertex2i(x_coord*side_length+20, y_coord*side_length+20);
+    glVertex2i(x_coord*side_length+18, y_coord*side_length+20);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(170.0/255,115.0/255,25.0/255);
+    glVertex2i(x_coord*side_length+4, y_coord*side_length+12);
+    glVertex2i(x_coord*side_length+6, y_coord*side_length+12);
+    glVertex2i(x_coord*side_length+6, y_coord*side_length+14);
+    glVertex2i(x_coord*side_length+4, y_coord*side_length+14);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(60.0/255,100.0/255,45.0/255);
+    glVertex2i(x_coord*side_length+12, y_coord*side_length+4);
+    glVertex2i(x_coord*side_length+14, y_coord*side_length+4);
+    glVertex2i(x_coord*side_length+14, y_coord*side_length+6);
+    glVertex2i(x_coord*side_length+12, y_coord*side_length+6);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(60.0/255,100.0/255,45.0/255);
+    glVertex2i(x_coord*side_length+10, y_coord*side_length+10);
+    glVertex2i(x_coord*side_length+12, y_coord*side_length+10);
+    glVertex2i(x_coord*side_length+12, y_coord*side_length+12);
+    glVertex2i(x_coord*side_length+10, y_coord*side_length+12);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(60.0/255,100.0/255,45.0/255);
+    glVertex2i(x_coord*side_length+9, y_coord*side_length+1);
+    glVertex2i(x_coord*side_length+11, y_coord*side_length+1);
+    glVertex2i(x_coord*side_length+11, y_coord*side_length+3);
+    glVertex2i(x_coord*side_length+9, y_coord*side_length+3);
+    glEnd();
+
 }
 
 /* End of Grass Object Class Definitions */
