@@ -20,6 +20,10 @@ Level::Level(int width, int height) {
 		}
 	}
 
+	for(int g = 0; g < width; ++g) {
+		map[g][1] = make_unique<Goal>(g,0);
+	}
+
 	moving.push_back(make_unique<Enemy>(1,1,2,2));
     this_player = new Player(width/2,height-1,10);
 }
@@ -37,6 +41,10 @@ void Level::Init(int width, int height) {
 		for (int h = 0; h < height; ++h) {
 			map[w][h] = make_unique<Grass>(w,h);
 		}
+	}
+
+	for (int g = 0; g < width; ++g) {
+		map[g][0] = make_unique<Goal>(g, 0);
 	}
 
 	moving.push_back(make_unique<Enemy>(1,1,2,2));
