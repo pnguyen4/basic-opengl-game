@@ -1,6 +1,8 @@
 #include "terrain_object.hpp"
 #include "graphics.hpp"
 #include <iostream>
+#include <cmath>
+#include <ctime>
 
 using namespace std;
 
@@ -297,16 +299,75 @@ void Grass::draw() const {
 Water::Water(int x, int y) {
     set_x_coord(x);
     set_y_coord(y);
-    setColor(0,0,255);
+    setColor(.2,.2,.8);
 	terrain_type = water;
 }
 void Water::draw() const {
+    time_t now = time(0);
+    struct tm tm;
+    tm = *localtime(&now);
+
 	glBegin(GL_QUADS);
 	glColor3f(fill.red, fill.green, fill.blue);
 	glVertex2i(x_coord*side_length, y_coord*side_length);
 	glVertex2i((x_coord*side_length) + side_length, y_coord*side_length);
 	glVertex2i((x_coord*side_length) + side_length, (y_coord*side_length) + side_length);
 	glVertex2i(x_coord*side_length, (y_coord*side_length) + side_length);
+	glEnd();
+
+    glBegin(GL_QUADS);
+	glColor3f(.5, .5, 1);
+    if(tm.tm_sec % 2 == 0) {
+        for(int x = 0; x < (2*M_PI)/(M_PI/20); ++x) {
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+sin(x)+6);
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+sin(x)+6);
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+sin(x)+7);
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+sin(x)+7);
+        }
+        for(int x = 0; x < (2*M_PI)/(M_PI/20); ++x) {
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+sin(x)+13);
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+sin(x)+13);
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+sin(x)+14);
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+sin(x)+14);
+        }
+        for(int x = 0; x < (2*M_PI)/(M_PI/20); ++x) {
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+sin(x));
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+sin(x));
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+sin(x)+1);
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+sin(x)+1);
+        }
+        for(int x = 0; x < (2*M_PI)/(M_PI/20); ++x) {
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+sin(x)+19);
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+sin(x)+19);
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+sin(x)+20);
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+sin(x)+20);
+        }
+    } else {
+        for(int x = 0; x < (2*M_PI)/(M_PI/20); ++x) {
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+cos(x)+6);
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+cos(x)+6);
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+cos(x)+7);
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+cos(x)+7);
+        }
+        for(int x = 0; x < (2*M_PI)/(M_PI/20); ++x) {
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+cos(x)+13);
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+cos(x)+13);
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+cos(x)+14);
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+cos(x)+14);
+        }
+        for(int x = 0; x < (2*M_PI)/(M_PI/20); ++x) {
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+cos(x));
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+cos(x));
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+cos(x)+1);
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+cos(x)+1);
+        }
+        for(int x = 0; x < (2*M_PI)/(M_PI/20); ++x) {
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+cos(x)+19);
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+cos(x)+19);
+	        glVertex2i(x_coord*side_length+x+1,(y_coord*side_length)+cos(x)+20);
+	        glVertex2i(x_coord*side_length+x,(y_coord*side_length)+cos(x)+20);
+        }
+    }
 	glEnd();
 }
 
