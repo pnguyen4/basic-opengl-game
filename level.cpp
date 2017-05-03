@@ -50,7 +50,9 @@ Level::Level(int selector) {
                 break;
         case 2: Init(10,20);
                 for (int w = 0; w < 10; ++w) {
-                    map[w][10] = make_unique<Water>(w,10);
+					for (int h = 9; h < 12; ++h) {
+                    	map[w][h] = make_unique<Water>(w,h);
+					}
                 }
 	            moving.push_back(make_unique<Enemy>(5,5,2,2));
                 break;
@@ -73,13 +75,18 @@ void Level::update_directions() {
 }
 
 void Level::moveObjects() {
-
+	// update enemy positions
 	for (int i = 0; i < moving.size(); ++i) {
 		if (moving[i]->get_direction() == L) {
 			moving[i]->left();
 		} else {
 			moving[i]->right();
 		}
+	}
+	// if player is in water, update player position
+	if ((getCurrentTerrain() == water) & (this_player->get_x_coord() > 0)) {
+		this_player->left();
+		// we could also have the player die if they are swept offscreen
 	}
 }
 
@@ -109,6 +116,10 @@ bool Level::checkOverlap() {
 		}
 	}
 	return overlap;
+}
+
+terrain Level::getCurrentTerrain() {
+	return map[this_player->get_x_coord()][this_player->get_y_coord()]->getTerrainType();
 }
 
 int Level::getMaxWidth() const { return max_width; }

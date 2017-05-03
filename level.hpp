@@ -40,6 +40,8 @@ class Level {
          */
         bool checkOverlap();
 
+		terrain getCurrentTerrain();
+
         /*
          * Requires: map and moving vectors must have dimensions >0
          * Modifies: nothing

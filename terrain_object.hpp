@@ -4,11 +4,14 @@
 #include "object.hpp"
 using namespace std;
 
+enum terrain {water, grass, rock};
+
 class TerrainObject : public GameObject {
     protected:
         int x_coord;
         int y_coord;
         double terrain_speed;
+	terrain terrain_type;
         GameObject::color fill;
         // color border;
     public:
@@ -21,6 +24,7 @@ class TerrainObject : public GameObject {
         virtual int get_x_coord() const;
         virtual int get_y_coord() const;
         virtual double getTerrainSpeed() const;
+	virtual terrain getTerrainType() const;
         virtual color getColor();
 
         /*
