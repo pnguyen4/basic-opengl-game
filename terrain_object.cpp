@@ -63,7 +63,7 @@ void Grass::draw() const {
 	glEnd();
 
 	glBegin(GL_QUADS);
-    glColor3f(.2,.5,.2);
+    glColor3f(.1,.5,.1);
     glVertex2i(x_coord*side_length+2, y_coord*side_length+2);
     glVertex2i(x_coord*side_length+4, y_coord*side_length+2);
     glVertex2i(x_coord*side_length+4, y_coord*side_length+4);
@@ -79,7 +79,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(25.0/255,90.0/255,10.0/255);
+    glColor3f(0,150.0/255,0);
     glVertex2i(x_coord*side_length+18, y_coord*side_length+18);
     glVertex2i(x_coord*side_length+20, y_coord*side_length+18);
     glVertex2i(x_coord*side_length+20, y_coord*side_length+20);
@@ -87,7 +87,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(0,195.0/255,5.0/255);
+    glColor3f(0,195.0/255,0);
     glVertex2i(x_coord*side_length+4, y_coord*side_length+12);
     glVertex2i(x_coord*side_length+6, y_coord*side_length+12);
     glVertex2i(x_coord*side_length+6, y_coord*side_length+14);
@@ -103,7 +103,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(10.0/255,220.0/255,25.0/255);
+    glColor3f(.1,.6,.15);
     glVertex2i(x_coord*side_length+10, y_coord*side_length+10);
     glVertex2i(x_coord*side_length+12, y_coord*side_length+10);
     glVertex2i(x_coord*side_length+12, y_coord*side_length+12);
@@ -111,7 +111,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(22.0/255,200.0/255,15.0/255);
+    glColor3f(.1,.6,.1);
     glVertex2i(x_coord*side_length+9, y_coord*side_length+1);
     glVertex2i(x_coord*side_length+11, y_coord*side_length+1);
     glVertex2i(x_coord*side_length+11, y_coord*side_length+3);
@@ -159,7 +159,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(0,.65,0);
+    glColor3f(0,.6,0);
     glVertex2i(x_coord*side_length+14, y_coord*side_length+0);
     glVertex2i(x_coord*side_length+16, y_coord*side_length+0);
     glVertex2i(x_coord*side_length+16, y_coord*side_length+2);
@@ -175,7 +175,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(0,.7,0);
+    glColor3f(0,.6,0);
     glVertex2i(x_coord*side_length+18, y_coord*side_length+13);
     glVertex2i(x_coord*side_length+20, y_coord*side_length+13);
     glVertex2i(x_coord*side_length+20, y_coord*side_length+15);
@@ -184,7 +184,7 @@ void Grass::draw() const {
 
 
     glBegin(GL_QUADS);
-    glColor3f(0,.4,0);
+    glColor3f(0,.5,0);
     glVertex2i(x_coord*side_length+5, y_coord*side_length+0);
     glVertex2i(x_coord*side_length+7, y_coord*side_length+0);
     glVertex2i(x_coord*side_length+7, y_coord*side_length+2);
@@ -192,7 +192,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(.3,.7,.3);
+    glColor3f(.1,.65,.1);
     glVertex2i(x_coord*side_length+2, y_coord*side_length+16);
     glVertex2i(x_coord*side_length+4, y_coord*side_length+16);
     glVertex2i(x_coord*side_length+4, y_coord*side_length+18);
@@ -200,7 +200,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(.2,.9,.2);
+    glColor3f(.1,.65,.2);
     glVertex2i(x_coord*side_length+15, y_coord*side_length+16);
     glVertex2i(x_coord*side_length+17, y_coord*side_length+16);
     glVertex2i(x_coord*side_length+17, y_coord*side_length+18);
@@ -208,7 +208,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(.2,.9,.2);
+    glColor3f(.1,.6,.1);
     glVertex2i(x_coord*side_length+17, y_coord*side_length+6);
     glVertex2i(x_coord*side_length+19, y_coord*side_length+6);
     glVertex2i(x_coord*side_length+19, y_coord*side_length+8);
@@ -216,7 +216,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(.2,.8,.3);
+    glColor3f(.1,.6,.2);
     glVertex2i(x_coord*side_length+9, y_coord*side_length+7);
     glVertex2i(x_coord*side_length+11, y_coord*side_length+7);
     glVertex2i(x_coord*side_length+11, y_coord*side_length+9);
@@ -224,7 +224,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(.1,.4,.1);
+    glColor3f(.1,.5,.1);
     glVertex2i(x_coord*side_length+8, y_coord*side_length+13);
     glVertex2i(x_coord*side_length+10, y_coord*side_length+13);
     glVertex2i(x_coord*side_length+10, y_coord*side_length+15);
@@ -232,7 +232,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(.2,.8,.2);
+    glColor3f(.1,.5,.1);
     glVertex2i(x_coord*side_length+0, y_coord*side_length+5);
     glVertex2i(x_coord*side_length+2, y_coord*side_length+5);
     glVertex2i(x_coord*side_length+2, y_coord*side_length+7);
@@ -240,7 +240,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(.15,.7,.25);
+    glColor3f(.1,.6,.1);
     glVertex2i(x_coord*side_length+1, y_coord*side_length+12);
     glVertex2i(x_coord*side_length+3, y_coord*side_length+12);
     glVertex2i(x_coord*side_length+3, y_coord*side_length+14);
@@ -248,7 +248,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(.1,.7,.1);
+    glColor3f(.1,.6,.1);
     glVertex2i(x_coord*side_length+18, y_coord*side_length+1);
     glVertex2i(x_coord*side_length+20, y_coord*side_length+1);
     glVertex2i(x_coord*side_length+20, y_coord*side_length+3);
@@ -256,7 +256,7 @@ void Grass::draw() const {
     glEnd();
 
     glBegin(GL_QUADS);
-    glColor3f(0,1,0);
+    glColor3f(0,.6,0);
     glVertex2i(x_coord*side_length+6, y_coord*side_length+3);
     glVertex2i(x_coord*side_length+8, y_coord*side_length+3);
     glVertex2i(x_coord*side_length+8, y_coord*side_length+5);
@@ -269,6 +269,22 @@ void Grass::draw() const {
     glVertex2i(x_coord*side_length+8, y_coord*side_length+9);
     glVertex2i(x_coord*side_length+8, y_coord*side_length+11);
     glVertex2i(x_coord*side_length+6, y_coord*side_length+11);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(0,.5,0);
+    glVertex2i(x_coord*side_length+13, y_coord*side_length+7);
+    glVertex2i(x_coord*side_length+15, y_coord*side_length+7);
+    glVertex2i(x_coord*side_length+15, y_coord*side_length+9);
+    glVertex2i(x_coord*side_length+13, y_coord*side_length+9);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glColor3f(0,.6,0);
+    glVertex2i(x_coord*side_length+5, y_coord*side_length+15);
+    glVertex2i(x_coord*side_length+7, y_coord*side_length+15);
+    glVertex2i(x_coord*side_length+7, y_coord*side_length+17);
+    glVertex2i(x_coord*side_length+5, y_coord*side_length+17);
     glEnd();
 }
 
