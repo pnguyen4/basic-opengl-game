@@ -53,5 +53,12 @@ class Water : public TerrainObject {
         virtual void draw() const override;
 };
 
+class Goal : public TerrainObject {
+	private:
+
+	public:
+		Goal(int x, int y);
+		virtual void draw() const override;
+};
 
 #endif

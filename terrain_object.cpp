@@ -372,3 +372,48 @@ void Water::draw() const {
 }
 
 /* End of Water Object Class Definitions */
+
+/* Goal Class Definition */
+
+Goal::Goal(int x, int y) {
+	set_x_coord(x);
+	set_y_coord(y);
+	setColor(0,0,0);
+	terrain_type = grass;
+}
+
+void Goal::draw() const{
+	glBegin(GL_QUADS);
+	glColor3f(fill.red, fill.green, fill.blue);
+	glVertex2i(x_coord*side_length, y_coord*side_length);
+	glVertex2i((x_coord*side_length) + side_length/2, y_coord*side_length);
+	glVertex2i((x_coord*side_length) + side_length/2, (y_coord*side_length) + side_length/2);
+	glVertex2i(x_coord*side_length, (y_coord*side_length) + side_length/2);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(1,1,1);
+	glVertex2i(x_coord*side_length + side_length / 2, y_coord*side_length);
+	glVertex2i((x_coord*side_length) + side_length, y_coord*side_length);
+	glVertex2i((x_coord*side_length) + side_length, (y_coord*side_length) + side_length/2);
+	glVertex2i(x_coord*side_length + side_length/2, (y_coord*side_length) + side_length);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(1,1,1);
+	glVertex2i(x_coord*side_length, y_coord*side_length + side_length/2);
+	glVertex2i((x_coord*side_length) + side_length / 2, y_coord*side_length + side_length/2);
+	glVertex2i((x_coord*side_length) + side_length / 2, (y_coord*side_length) + side_length);
+	glVertex2i(x_coord*side_length, (y_coord*side_length) + side_length);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor3f(fill.red, fill.green, fill.blue);
+	glVertex2i(x_coord*side_length + side_length / 2, y_coord*side_length + side_length / 2);
+	glVertex2i((x_coord*side_length) + side_length, y_coord*side_length + side_length / 2);
+	glVertex2i((x_coord*side_length) + side_length, (y_coord*side_length) + side_length);
+	glVertex2i(x_coord*side_length + side_length / 2, (y_coord*side_length) + side_length);
+	glEnd();
+}
+
+/* End of Goal Class Definitions */

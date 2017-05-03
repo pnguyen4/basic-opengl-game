@@ -1,5 +1,7 @@
 #ifndef game_object
 #define game_object
+#define _USE_MATH_DEFINES 
+#include <math.h>
 using namespace std;
 
 class GameObject {
