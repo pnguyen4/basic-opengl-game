@@ -225,7 +225,7 @@ void kbd(unsigned char key, int x, int y) {
             level_id = 1;
             init();
             screen = playgame;
-            // pressed n
+        // pressed n
         } else if (key == 78 || key == 110) {
             glutDestroyWindow(wd);
             exit(0);
@@ -244,37 +244,32 @@ void kbdS(int key, int x, int y) {
                     player->down();
                 }
                 break;
+
             case GLUT_KEY_LEFT:
                 if (player->get_x_coord() > 0) {
                     player->left();
                 }
                 break;
+
             case GLUT_KEY_RIGHT:
                 if (player->get_x_coord() < (map->getMaxWidth() -1)) {
                     player->right();
                 }
                 break;
+
             case GLUT_KEY_UP:
                 if (player->get_y_coord() > 0) {
                     player->up();
                 }
                 break;
         }
-        // this now happens in timer()
-        /*
-		if(map->checkOverlap()) {
-			player_state = 1; // you died
-			screen = endgame;
-		}
-        */
+
         if(player->get_y_coord() == 0) {
             screen = endgame;
             if(level_id < 2) {
                 player_state = 2; // you beat the level
             } else { player_state = 3; } // you win the game
         }
-        // TODO: Find way to determine if player is overlapping with enemy or power-up
-		// (Current assumption is that ALL elements of vector "moving" are enemies)
     }
     return;
 }
