@@ -127,7 +127,7 @@ void Player::draw() const {
 
 	//draw body
 	glBegin(GL_TRIANGLE_FAN);
-	glColor3f(255, 0, 0);
+	glColor3f(1, 0, 0);
 	glVertex2i(get_x_coord()*side_length + side_length / 2, get_y_coord()*side_length + side_length / 1.7);
 	for (int i = 0; i <= 360; ++i) {
 		glVertex2i((get_x_coord()*side_length + side_length / 2) + .4*side_length * cos(i * M_PI / 180.0),
