@@ -64,6 +64,21 @@ Level::Level(int selector) {
                 }
 	            moving.push_back(make_unique<Enemy>(5,5,2,2));
                 break;
+        case 3: Init(10,20);
+                for (int w = 0; w < 10; ++w) {
+					for (int h = 9; h < 11; ++h) {
+                    	map[w][h] = make_unique<Water>(w,h);
+					}
+                }
+                for (int w = 0; w < 10; ++w) {
+					for (int h = 2; h < 4; ++h) {
+                    	map[w][h] = make_unique<Water>(w,h);
+					}
+                }
+	            moving.push_back(make_unique<Enemy>(5,5,2,2));
+	            moving.push_back(make_unique<Enemy>(10,15,2,2));
+	            moving.push_back(make_unique<Enemy>(1,13,2,2));
+                break;
         default: Level();
     }
 }

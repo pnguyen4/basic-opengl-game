@@ -149,7 +149,7 @@ void endGame(int pstate) {
     glVertex2i(width,height);
     glVertex2i(0,height);
     glEnd();
-	
+
     string end;
     if(pstate == 1) {
         end = "DEAD. RESTART(Y/N)?";
@@ -311,14 +311,14 @@ void endGame(int pstate) {
 				(6 * height / 7) + .08*(2 * width / 5) * sin(i * M_PI / 180.0));
 		}
 		glEnd();
-		
+
     }
     glColor3f(1,1,1);
     glRasterPos2i(width/4,height/2);
     for (int i = 0; i < end.length(); ++i) {
         glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, end[i]);
     }
-	
+
 }
 
 void init() {
@@ -421,7 +421,7 @@ void kbdS(int key, int x, int y) {
 
         if(player->get_y_coord() == 0) {
             screen = endgame;
-            if(level_id < 2) {
+            if(level_id < 3) {
                 player->set_state(2); // you beat the level
             } else { player->set_state(3); } // you win the game
         }
@@ -447,7 +447,7 @@ void mouse(int button, int state, int x, int y) {
     if(x >= width/4 && x <= width-(width/4) && y >= height/4
         && y <= height/2 && screen == title) {
         level_id = loadLevel();
-        if(level_id > 2) {
+        if(level_id > 3) {
             cout << "error, no such level exists" << endl;
             level_id = 1;
         }
