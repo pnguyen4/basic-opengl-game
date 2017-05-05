@@ -149,21 +149,176 @@ void endGame(int pstate) {
     glVertex2i(width,height);
     glVertex2i(0,height);
     glEnd();
+	
     string end;
     if(pstate == 1) {
         end = "DEAD. RESTART(Y/N)?";
+		glBegin(GL_QUADS);
+		glColor3f(0.5, 0.5, 0.5);
+		glVertex2i(width / 4, 3*height/4);
+		glVertex2i(3 * width / 4, 3 * height / 4);
+		glVertex2i(3 * width / 4, height);
+		glVertex2i(width / 4, height);
+		glEnd();
+
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(0.5, 0.5, 0.5);
+		glVertex2i(width/2, 3 * height / 4);
+		for (int i = 0; i <= 360; ++i) {
+			glVertex2i((width / 2) + (width/4) * cos(i * M_PI / 180.0),
+				(3 * height / 4) + (width/4) * sin(i * M_PI / 180.0));
+		}
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glColor3f(0, 1, 0);
+		glVertex2i(width/2 - 1, 5 * height / 6);
+		glVertex2i(width/2 + 1, 5 * height / 6);
+		glVertex2i(width/2 +1, height);
+		glVertex2i(width/2 -1, height);
+		glEnd();
+
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(1, 1, 1);
+		glVertex2i(width / 2, 5 * height / 6);
+		for (int i = 0; i <= 360; ++i) {
+			glVertex2i((width / 2) + (width / 10) * cos(i * M_PI / 180.0),
+				(5 * height / 6) + (width / 10) * sin(i * M_PI / 180.0));
+		}
+		glEnd();
+
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(1, 1, 0);
+		glVertex2i(width / 2, 5 * height / 6);
+		for (int i = 0; i <= 360; ++i) {
+			glVertex2i((width / 2) + (width / 20) * cos(i * M_PI / 180.0),
+				(5 * height / 6) + (width / 20) * sin(i * M_PI / 180.0));
+		}
+		glEnd();
     }
     else if(pstate == 2) {
         end = "CLICK FOR NEXT LEVEL";
     }
     else if(pstate == 3) {
         end = "WIN! RESTART(Y/N)?";
+		//draw head
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(0.3, 0.3, 0.3);
+		glVertex2i(width / 2, 3*height/4);
+		for (int i = 0; i <= 360; ++i) {
+			glVertex2i(width / 2 + (width/6) * cos(i * M_PI / 180.0),
+				(3 * height / 4) + (width/6) * sin(i * M_PI / 180.0));
+		}
+		glEnd();
+
+		//draw body
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(1, 0, 0);
+		glVertex2i(width / 2, 8 * height / 10);
+		for (int i = 0; i <= 360; ++i) {
+			glVertex2i(width / 2 + (width / 5) * cos(i * M_PI / 180.0),
+				(8 * height / 10) + (width / 5) * sin(i * M_PI / 180.0));
+		}
+		glEnd();
+
+		//draw crown
+		glBegin(GL_QUADS);
+		glColor3f(1, 1, 0);
+		glVertex2i(width / 3, 5.75 * height / 10);
+		glVertex2i(2*width / 3, 5.75 * height / 10);
+		glVertex2i(2*width / 3, 6.25*height/10);
+		glVertex2i(width / 3, 6.25*height/10);
+		glEnd();
+
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(0, 0, 0);
+		glVertex2i(width / 2, 5.4 * height / 10);
+		for (int i = 0; i <= 360; ++i) {
+			glVertex2i(width / 2 + (width / 9) * cos(i * M_PI / 180.0),
+				(5.4 * height / 10) + (width / 9) * sin(i * M_PI / 180.0));
+		}
+		glEnd();
+
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(0, 0, 0);
+		glVertex2i(width / 2 + (width / 9), 5.4 * height / 10);
+		for (int i = 0; i <= 360; ++i) {
+			glVertex2i((width / 2 + (width / 9)) + (width / 9) * cos(i * M_PI / 180.0),
+				(5.4 * height / 10) + (width / 9) * sin(i * M_PI / 180.0));
+		}
+		glEnd();
+
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(0, 0, 0);
+		glVertex2i(width / 2 - (width / 9), 5.4 * height / 10);
+		for (int i = 0; i <= 360; ++i) {
+			glVertex2i((width / 2 - (width / 9)) + (width / 9) * cos(i * M_PI / 180.0),
+				(5.4 * height / 10) + (width / 9) * sin(i * M_PI / 180.0));
+		}
+		glEnd();
+
+		//draw spots
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(0.3, 0.3, 0.3);
+		glVertex2i(width / 2 - width / 10, 3*height / 4);
+		for (int i = 0; i <= 360; ++i) {
+			glVertex2i((width / 2 - width / 10) + .08*(2 * width / 5) * cos(i * M_PI / 180.0),
+				(3*height / 4) + .08*(2 * width / 5) * sin(i * M_PI / 180.0));
+		}
+		glEnd();
+
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(0.3, 0.3, 0.3);
+		glVertex2i(width / 2 + width / 10, 3 * height / 4);
+		for (int i = 0; i <= 360; ++i) {
+			glVertex2i((width / 2 + width / 10) + .08*(2 * width / 5) * cos(i * M_PI / 180.0),
+				(3 * height / 4) + .08*(2 * width / 5) * sin(i * M_PI / 180.0));
+		}
+		glEnd();
+		//
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(0.3, 0.3, 0.3);
+		glVertex2i(width / 2 - (2 * width / 4) / 10, 4 * height / 5);
+		for (int i = 0; i <= 360; ++i) {
+			glVertex2i((width / 2 - (2 * width / 4) / 10) + .08*(2 * width / 5) * cos(i * M_PI / 180.0),
+				(4 * height / 5) + .08*(2 * width / 5) * sin(i * M_PI / 180.0));
+		}
+		glEnd();
+
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(0.3, 0.3, 0.3);
+		glVertex2i(width / 2 + (2 * width / 4) / 10, 4 * height / 5);
+		for (int i = 0; i <= 360; ++i) {
+			glVertex2i((width / 2 + (2 * width / 4) / 10) + .08*(2 * width / 5) * cos(i * M_PI / 180.0),
+				(4 * height / 5) + .08*(2 * width / 5) * sin(i * M_PI / 180.0));
+		}
+		glEnd();
+		//
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(0.3, 0.3, 0.3);
+		glVertex2i(width / 2 - width / 10, 6 * height / 7);
+		for (int i = 0; i <= 360; ++i) {
+			glVertex2i((width / 2 - width / 10) + .08*(2 * width / 5) * cos(i * M_PI / 180.0),
+				(6 * height / 7) + .08*(2 * width / 5) * sin(i * M_PI / 180.0));
+		}
+		glEnd();
+
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(0.3, 0.3, 0.3);
+		glVertex2i(width / 2 + width / 10, 6 * height / 7);
+		for (int i = 0; i <= 360; ++i) {
+			glVertex2i((width / 2 + width / 10) + .08*(2 * width / 5) * cos(i * M_PI / 180.0),
+				(6 * height / 7) + .08*(2 * width / 5) * sin(i * M_PI / 180.0));
+		}
+		glEnd();
+		
     }
     glColor3f(1,1,1);
     glRasterPos2i(width/4,height/2);
     for (int i = 0; i < end.length(); ++i) {
         glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_10, end[i]);
     }
+	
 }
 
 void init() {
