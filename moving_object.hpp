@@ -50,6 +50,7 @@ class MovingObject : public GameObject {
 class Player : public MovingObject {
     private:
         double health;
+	int state;
         //double attack_strength;
     public:
 		Player();
@@ -85,9 +86,11 @@ class Player : public MovingObject {
         // getters return field vars. That's literally it.
         virtual double getHealth() const;
         virtual double getStrength() const { return 0;}
+	virtual int get_state() const;
 
         // setters
         virtual void setHealth(double hp);
+	virtual void set_state(int s);
 
         virtual void draw() const override;
 };

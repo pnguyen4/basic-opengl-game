@@ -113,6 +113,14 @@ double Player::calcSpeed(double terrain_speed) const {
     }
 }
 
+void Player::set_state(int s) {
+	state = s;
+}
+
+int Player::get_state() const {
+	return state;
+}
+
 void Player::draw() const {
 	
 	//draw head
