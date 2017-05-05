@@ -92,9 +92,8 @@ void Level::moveObjects() {
 		}
 	}
 	// if player is in water, update player position
-	if ((getCurrentTerrain() == water) & (this_player->get_x_coord() > 0)) {
+	if (getCurrentTerrain() == water) {
 		this_player->left();
-		// we could also have the player die if they are swept offscreen
 	}
 }
 

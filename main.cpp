@@ -203,7 +203,7 @@ void display() {
             showTitle(cursor_state);
             break;
         case endgame:
-            endGame(player_state);
+            endGame(player->get_state());
     }
 
     glFlush();
@@ -219,7 +219,7 @@ void kbd(unsigned char key, int x, int y) {
             screen = playgame;
         }
     }
-    if (screen == endgame && (player_state == 3 || player_state == 1)) {
+    if (screen == endgame && (player->get_state() == 3 || player->get_state() == 1)) {
         // pressed y
         if (key == 89 || key == 121) {
             level_id = 1;
@@ -267,8 +267,8 @@ void kbdS(int key, int x, int y) {
         if(player->get_y_coord() == 0) {
             screen = endgame;
             if(level_id < 2) {
-                player_state = 2; // you beat the level
-            } else { player_state = 3; } // you win the game
+                player->set_state(2); // you beat the level
+            } else { player->set_state(3); } // you win the game
         }
     }
     return;
@@ -311,7 +311,7 @@ void mouse(int button, int state, int x, int y) {
         glutDestroyWindow(wd);
         exit(0);
     }
-    if(screen == endgame && player_state == 2) {
+    if(screen == endgame && player->get_state() == 2) {
         level_id++;
         init();
         screen = playgame;
@@ -322,8 +322,8 @@ void mouse(int button, int state, int x, int y) {
 
 void timer(int extra) {
     if (screen == playgame) {
-    	if(map->checkOverlap()) {
-			player_state = 1; // you died
+    	if(map->checkOverlap() || ( (map->getCurrentTerrain() == water) && (player->get_x_coord() < 1) )) {
+			player->set_state(1); // you died
 			screen = endgame;
 		}
     }
