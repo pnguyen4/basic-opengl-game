@@ -35,6 +35,148 @@ int loadLevel() {
 }
 
 void showTitle(int state) {
+	//title
+	//B
+	glBegin(GL_QUADS);
+	glColor3f(1, 0, 1);
+	glVertex2i(width / 19, height / 5);
+	glVertex2i(3*width/19, height/5);
+	glVertex2i(3*width / 19, height/10);
+	glVertex2i(width / 19, height/10);
+	glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i(3* width / 38, height / 10 + 3*width / 38);
+	glVertex2i(5 * width / 38, height / 10 + 3*width / 38);
+	glVertex2i(5 * width / 38, height / 10 + width / 38);
+	glVertex2i(3 * width / 38, height / 10 + width / 38);
+	glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i(3 * width / 38, height / 5 - width / 38);
+	glVertex2i(5 * width / 38, height / 5 - width / 38);
+	glVertex2i(5 * width / 38, height / 5 - width / 38 - 3 * width / 38);
+	glVertex2i(3 * width / 38, height / 5 - width / 38 - 3 * width / 38);
+	glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i(6 * width / 38, height / 10 + 3 * width / 38);
+	glVertex2i(5 * width / 38, height / 10 + 3 * width / 38);
+	glVertex2i(5 * width / 38, height / 5 - width / 38 - 3 * width / 38);
+	glVertex2i(6 * width / 38, height / 5 - width / 38 - 3 * width / 38);
+	glEnd();
+	//U
+	glBegin(GL_QUADS);
+	glColor3f(1, 0, 1);
+	glVertex2i(4*width / 19, height / 5);
+	glVertex2i(6 * width / 19, height / 5);
+	glVertex2i(6 * width / 19, height / 10);
+	glVertex2i(4*width / 19, height / 10);
+	glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i(9 * width / 38, height / 5 - width/38);
+	glVertex2i(11 * width / 38, height / 5 - width / 38);
+	glVertex2i(11 * width / 38, height / 10);
+	glVertex2i(9 * width / 38, height / 10);
+	glEnd();
+	//G
+	glBegin(GL_QUADS);
+	glColor3f(1, 0, 1);
+	glVertex2i(7 * width / 19, height / 5);
+	glVertex2i(9 * width / 19, height / 5);
+	glVertex2i(9 * width / 19, height / 10);
+	glVertex2i(7 * width / 19, height / 10);
+	glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i(15 * width / 38, height / 5 - width / 38);
+	glVertex2i(17 * width / 38, height / 5 - width / 38);
+	glVertex2i(17 * width / 38, height / 10 + width / 38);
+	glVertex2i(15 * width / 38, height / 10 + width / 38);
+	glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i(18 * width / 38, height / 5 - 4 * width / 38);
+	glVertex2i(17 * width / 38, height / 5 - 4 * width / 38);
+	glVertex2i(17 * width / 38, height / 10 + width / 38);
+	glVertex2i(18 * width / 38, height / 10 + width / 38);
+	glEnd();
+	//G
+	glBegin(GL_QUADS);
+	glColor3f(1, 0, 1);
+	glVertex2i(10 * width / 19, height / 5);
+	glVertex2i(12 * width / 19, height / 5);
+	glVertex2i(12 * width / 19, height / 10);
+	glVertex2i(10 * width / 19, height / 10);
+	glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i(21 * width / 38, height / 5 - width / 38);
+	glVertex2i(23 * width / 38, height / 5 - width / 38);
+	glVertex2i(23 * width / 38, height / 10 + width / 38);
+	glVertex2i(21 * width / 38, height / 10 + width / 38);
+	glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i(24 * width / 38, height / 5 - 4 * width / 38);
+	glVertex2i(23 * width / 38, height / 5 - 4 * width / 38);
+	glVertex2i(23 * width / 38, height / 10 + width / 38);
+	glVertex2i(24 * width / 38, height / 10 + width / 38);
+	glEnd();
+	//E
+	glBegin(GL_QUADS);
+	glColor3f(1, 0, 1);
+	glVertex2i(13 * width / 19, height / 5);
+	glVertex2i(15 * width / 19, height / 5);
+	glVertex2i(15 * width / 19, height / 10);
+	glVertex2i(13 * width / 19, height / 10);
+	glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i(27 * width / 38, height / 10 + 3 * width / 38);
+	glVertex2i(30 * width / 38, height / 10 + 3 * width / 38);
+	glVertex2i(30 * width / 38, height / 10 + width / 38);
+	glVertex2i(27 * width / 38, height / 10 + width / 38);
+	glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i(27 * width / 38, height / 5 - width / 38);
+	glVertex2i(30 * width / 38, height / 5 - width / 38);
+	glVertex2i(30 * width / 38, height / 5 - width / 38 - 3 * width / 38);
+	glVertex2i(27 * width / 38, height / 5 - width / 38 - 3 * width / 38);
+	glEnd();
+	//R
+	glBegin(GL_QUADS);
+	glColor3f(1, 0, 1);
+	glVertex2i(16 * width / 19, height / 5);
+	glVertex2i(18 * width / 19, height / 5);
+	glVertex2i(18 * width / 19, height / 10);
+	glVertex2i(16 * width / 19, height / 10);
+	glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i(33 * width / 38, height / 10 + 3 * width / 38);
+	glVertex2i(35 * width / 38, height / 10 + 3 * width / 38);
+	glVertex2i(35 * width / 38, height / 10 + width / 38);
+	glVertex2i(33 * width / 38, height / 10 + width / 38);
+	glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i(33 * width / 38, height / 5);
+	glVertex2i(35 * width / 38, height / 5);
+	glVertex2i(35 * width / 38, height / 5 - width / 38 - 3 * width / 38);
+	glVertex2i(33 * width / 38, height / 5 - width / 38 - 3 * width / 38);
+	glEnd();
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	glVertex2i(36 * width / 38, height / 10 + 3 * width / 38);
+	glVertex2i(35 * width / 38, height / 10 + 3 * width / 38);
+	glVertex2i(35 * width / 38, height / 5 - width / 38 - 3 * width / 38);
+	glVertex2i(36 * width / 38, height / 5 - width / 38 - 3 * width / 38);
+	glEnd();
+
+	//options
     glBegin(GL_QUADS);
     glColor3f(.5,0,.5);
     glVertex2i(width/4,height/4);
@@ -493,7 +635,7 @@ int main(int argc, char** argv) {
     glutInitWindowSize((int)width, (int)height);
     glutInitWindowPosition(100, 100);
 
-    wd = glutCreateWindow("CS120 Game");
+    wd = glutCreateWindow("Bugger");
     glutDisplayFunc(display);
     initGL();
     glutKeyboardFunc(kbd);
