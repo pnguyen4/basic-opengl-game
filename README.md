@@ -1,5 +1,5 @@
 
-    CS120 Group Programming Project
+    CS120 Group Programming Project (mirrored from university gitlab)
 
 A Frogger-style game where the player tries to avoid attacks from enemies while
 crossing the screen. Levels are completed when the player moves from one side of
